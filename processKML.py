@@ -1,7 +1,13 @@
-from pykml import parser
+import sys
+import os
+from lxml import etree, objectify
 
-kmlFile = path.join('exampleKML.kml')
+sys.path.insert(0, '/pyxml')
+
+
+kmlFile = os.path.join('exampleKML.kml')
 with open(kmlFile) as f:
-  doc = parser.parse(f)
+    print f.readlines()
+ # doc = parser.parse(f)
 
-print doc
+

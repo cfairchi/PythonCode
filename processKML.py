@@ -32,7 +32,7 @@ for txt in coords:
         location = "&Location=" + str(lla[0]) + "," + str(lla[1])
         head = "&heading=" + str(heading)
         
-        print "http://maps.googleapis.com/maps/api/streetview?size=300x200" + location + head + "&sensor=false&key=AIzaSyBqftMUNYnTPUaNRoovD9AfCeHyye8H6lk"
+        print "http://maps.googleapis.com/maps/api/streetview?size=300x200" + location + head + "&sensor=false"
         #print "Dist: " + str(dist) + " Bearing: " + str(heading) + " Location=" + llastr[1] + "," + llastr[0] + " Alt: " + llastr[2]
         lastLLA = lla
     i+=1

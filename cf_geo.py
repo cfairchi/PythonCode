@@ -2,6 +2,8 @@
 import math
 
 #returns distance between 2 lat/lon pairs using Haversine Formula
+#origin [lat,lon] in decimal format
+#destination [lat,lon] in decimal format
 def distanceKM(origin, destination):
     lat1, lon1 = origin
     lat2, lon2 = destination
@@ -16,6 +18,9 @@ def distanceKM(origin, destination):
 
     return d
     
+#returns bearing from origin to destination
+#origin [lat,lon] in decimal format
+#destination [lat,lon] in decimal format
 def bearing(origin, destination):
     lat1, lon1 = origin
     lat2, lon2 = destination

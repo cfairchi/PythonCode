@@ -39,13 +39,13 @@ for txt in coords:
             heading = round(bearing([lastLLA[0],lastLLA[1]],[lla[0],lla[1]]),2)
         
         location = "&location=" + str(lla[0]) + ",%20" + str(lla[1])
-        head = "&heading=" + str(int(heading))
+        head = "&heading=" + str(heading)
 
         urllib.urlretrieve("http://maps.googleapis.com/maps/api/streetview?size=400x400" + location + "&fov=90" + head + "&pitch=10&sensor=false", "sv_" + str(i) +".jpg")
         print "http://maps.googleapis.com/maps/api/streetview?size=400x400" + location + "&fov=90" + head + "&pitch=10&sensor=false"
-        im = Image.open("sv_" + str(i) +".jpg")
-        im.save("sv_" + str(i) +".png")
-        #cv.WriteFrame(w, "sv_" + str(i) +".png")
+        img = cv.LoadImage("sv_" + str(i) +".jpg")
+        #im.save("sv_" + str(i) +".png")
+        cv.WriteFrame(w, img)
 
         #print "Dist: " + str(dist) + " Bearing: " + str(heading) + " Location=" + llastr[1] + "," + llastr[0] + " Alt: " + llastr[2]
         lastLLA = lla

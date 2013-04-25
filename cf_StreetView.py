@@ -43,5 +43,6 @@ def generateVideoFromKML(thekml, theVideoFileName):
             #os.remove("sv_" + str(i) +".jpg")
             lastLLA = lla
             i+=1
-
+    print str(i) + " Images Processed"
+    
         

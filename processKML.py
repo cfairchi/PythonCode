@@ -2,7 +2,12 @@ import os
 
 from cf_StreetView import generateVideoFromKML
 
-kmlFile = os.path.join('colorado-colorado-national-monument.kml')
-lines = open(kmlFile).read()
-generateVideoFromKML(lines,"colorado-colorado-national-monument")
+for root, dirs, files in os.walk(os.getcwd()):
+    for fName in files:
+        if fName.endswith(".kml"):
+            kmlFile = os.path.join(fName)
+            lines = open(kmlFile).read()
+            generateVideoFromKML(lines,fName)
+
+
 

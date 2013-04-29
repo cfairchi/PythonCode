@@ -1,0 +1,2 @@
+def getGoogleAPIKey
+    return "&key="

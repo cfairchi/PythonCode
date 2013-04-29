@@ -36,7 +36,7 @@ def generateVideoFromKML(thekml, theVideoFileName):
             location = "&location=" + str(lla[0]) + ",%20" + str(lla[1])
             head = "&heading=" + str(heading)
             
-            urlString = "http://maps.googleapis.com/maps/api/streetview?size=400x300" + location + "&fov=90" + head + "&pitch=10&sensor=false&key=AIzaSyBqftMUNYnTPUaNRoovD9AfCeHyye8H6lk"
+            urlString = "http://maps.googleapis.com/maps/api/streetview?size=400x300" + location + "&fov=90" + head + "&pitch=10&sensor=false"
             urllib.urlretrieve(urlString, "sv_" + str(i) +".jpg")
             statinfo = os.stat("sv_" + str(i) +".jpg")
             #print statinfo.st_size

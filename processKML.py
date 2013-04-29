@@ -1,6 +1,6 @@
 import os
 
-from cf_StreetView import generateVideoFromKML
+from csf_StreetView import generateVideoFromKML
 
 for root, dirs, files in os.walk(os.getcwd()):
     for fName in files:

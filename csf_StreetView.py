@@ -5,8 +5,8 @@ import cv
 import Image
 import time
 
-from csf_geo import distanceKM
-from csf_geo import bearing
+from cf_geo import distanceKM
+from cf_geo import bearing
 from GoogleAPIKey import getGoogleAPIKey
 
 def generateVideoFromKML(thekml, theVideoFileName):

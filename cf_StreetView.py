@@ -16,7 +16,7 @@ def generateVideoFromKML(thekml, theVideoFileName):
     i = 0
     fourcc = cv.CV_FOURCC('P','I','M','1')
     outFile = theVideoFileName + ".mpeg"
-    w = cv.CreateVideoWriter(outFile, fourcc, 24,(400,300), is_color=1)
+    w = cv.CreateVideoWriter(outFile, fourcc, 24,(300,300), is_color=1)
 
     lastLLA = None
     
@@ -37,7 +37,7 @@ def generateVideoFromKML(thekml, theVideoFileName):
             location = "&location=" + str(lla[0]) + ",%20" + str(lla[1])
             head = "&heading=" + str(heading)
             
-            urlString = "http://maps.googleapis.com/maps/api/streetview?size=400x300" + location + "&fov=90" + head + "&pitch=10&sensor=false" + getGoogleAPIKey()
+            urlString = "http://maps.googleapis.com/maps/api/streetview?size=300x300" + location + "&fov=90" + head + "&pitch=10&sensor=false" + getGoogleAPIKey()
             urllib.urlretrieve(urlString, "sv_" + str(i) +".jpg")
             statinfo = os.stat("sv_" + str(i) +".jpg")
             #print statinfo.st_size
@@ -45,7 +45,7 @@ def generateVideoFromKML(thekml, theVideoFileName):
                 #print urlString
                 img = cv.LoadImage("sv_" + str(i) +".jpg")
                 #im.save("sv_" + str(i) +".png")
-                for x in range(0, 5):
+                for x in range(0, 8):
                     cv.WriteFrame(w, img)
 
             os.remove("sv_" + str(i) +".jpg")

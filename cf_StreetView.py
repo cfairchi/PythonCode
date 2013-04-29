@@ -7,6 +7,7 @@ import time
 
 from cf_geo import distanceKM
 from cf_geo import bearing
+from GoogleAPIKey import getGoogleAPIKey
 
 def generateVideoFromKML(thekml, theVideoFileName):
     content = thekml.split('<LineString>')
@@ -36,7 +37,7 @@ def generateVideoFromKML(thekml, theVideoFileName):
             location = "&location=" + str(lla[0]) + ",%20" + str(lla[1])
             head = "&heading=" + str(heading)
             
-            urlString = "http://maps.googleapis.com/maps/api/streetview?size=400x300" + location + "&fov=90" + head + "&pitch=10&sensor=false"
+            urlString = "http://maps.googleapis.com/maps/api/streetview?size=400x300" + location + "&fov=90" + head + "&pitch=10&sensor=false" + getGoogleAPIKey()
             urllib.urlretrieve(urlString, "sv_" + str(i) +".jpg")
             statinfo = os.stat("sv_" + str(i) +".jpg")
             #print statinfo.st_size

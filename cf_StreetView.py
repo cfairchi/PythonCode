@@ -40,18 +40,13 @@ def generateVideoFromKML(thekml, theVideoFileName):
             urlString = "http://maps.googleapis.com/maps/api/streetview?size=300x300" + location + "&fov=90" + head + "&pitch=10&sensor=false" + getGoogleAPIKey()
             urllib.urlretrieve(urlString, "sv_" + str(i) +".jpg")
             statinfo = os.stat("sv_" + str(i) +".jpg")
-            #print statinfo.st_size
             if (statinfo.st_size > 5000):
-                #print urlString
                 img = cv.LoadImage("sv_" + str(i) +".jpg")
-                #im.save("sv_" + str(i) +".png")
                 for x in range(0, 8):
                     cv.WriteFrame(w, img)
 
             os.remove("sv_" + str(i) +".jpg")
             lastLLA = lla
-            #if i >50: break
-            #time.sleep(1)
             print i
             i+=1
     print str(i) + " Images Processed"

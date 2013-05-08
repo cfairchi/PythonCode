@@ -27,7 +27,15 @@ for byway in byways:
     drive.startLon = ""
     drive.stopLat = ""
     drive.stopLon = ""
-    drive.description = byway.find("ShortDescription").text + byway.find("FullDescription").text
+    sd = ""
+    fd = ""
+    if (byway.find("ShortDescription") is not None):
+    	sd = byway.find("ShortDescription").text
+    	
+    if (byway.find("FullDescription") is not None):
+    	fd = byway.find("FullDescription").text
+    	
+    drive.description = sd + fd
     if (byway.find("Length") is not None):
     	drive.mileage = byway.find("Length").text
     if (byway.find("SuggestedTime") is not None):

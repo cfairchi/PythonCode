@@ -15,22 +15,22 @@ elem = tree.getroot()
 byways = elem.findall("Byway")
 for byway in byways:
     drive = DBDrive()
-    if (byway.find("id") isnot None):
+    if (byway.find("id") is not None):
     	drive.driveid = byway.find("id").text
-    if (byway.find("Name") isnot None):
+    if (byway.find("Name") is not None):
     	drive.driveName = byway.find("Name").text
     drive.country = "US"
-    if (byway.find("States") isnot None):
-    	if (byway.find("State") isnot None):
+    if (byway.find("States") is not None):
+    	if (byway.find("State") is not None):
     		drive.region = byway.find("States").find("State").text
     drive.startLat = ""
     drive.startLon = ""
     drive.stopLat = ""
     drive.stopLon = ""
     drive.description = byway.find("ShortDescription").text + byway.find("FullDescription").text
-    if (byway.find("Length") isnot None):
+    if (byway.find("Length") is not None):
     	drive.mileage = byway.find("Length").text
-    if (byway.find("SuggestedTime") isnot None):
+    if (byway.find("SuggestedTime") is not None):
     	drive.timeToAllow = byway.find("SuggestedTime").text
     drive.favorite = "false"
     if (byway.find("Photo") is not None):
@@ -43,6 +43,6 @@ for byway in byways:
     drive.seasons = ""
     drive.considerations = ""
     drive.directions = ""
-    if (byway.find("Route") isnot None):
+    if (byway.find("Route") is not None):
     	drive.coordinates = byway.find("Route")
     drive.toString()

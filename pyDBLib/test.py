@@ -26,7 +26,10 @@ for byway in byways:
     drive.mileage = byway.find("Length").text
     drive.timeToAllow = byway.find("SuggestedTime").text
     drive.favorite = "false"
-    drive.image = byway.find("Photo").find("URL").text
+    if (byway.find("Photo") is not None):
+    	if (byway.find("Photo").find("URL") is not None):
+    		drive.image = byway.find("Photo").find("URL").text
+    		
     drive.imageCredits = byway.find("Photo").find("Credits").text
     drive.mapimage = ""
     drive.restrictions = ""

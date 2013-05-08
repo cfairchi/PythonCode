@@ -1,4 +1,7 @@
 
+import sqlite3 as lite
+import sys
+
 def createSQLiteTable(theDBObject, theSQLiteDatabaseName,theDeleteIfExists):
     con = None
     try:

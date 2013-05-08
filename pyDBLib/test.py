@@ -14,5 +14,24 @@ elem = tree.getroot()
 byways = elem.findall("Byway")
 for byway in byways:
 	drive = DBDrive()
-	drive.id = byway.find("id").text
-	drive.
+    drive.driveid = byway.find("id").text
+    drive.driveName = byway.find("Name").text
+    drive.country = "US"
+    drive.region = byway.find("States").find("State").text
+    drive.startLat = ""
+    drive.startLon = ""
+    drive.stopLat = ""
+    drive.stopLon = ""
+    drive.description = byway.find("ShortDescription").text + byway.find("FullDescription").text
+    drive.mileage = byway.find("Length").text
+    drive.timeToAllow = byway.find("SuggestedTime").text
+    drive.favorite = "false"
+    drive.image = byway.find("Photo").find("URL").text
+    drive.imageCredits = byway.find("Photo").find("Credits").text
+    drive.mapimage = ""
+    drive.restrictions = ""
+    drive.seasons = ""
+    drive.considerations = ""
+    drive.directions = ""
+    drive.coordinates = byway.find("Route")
+

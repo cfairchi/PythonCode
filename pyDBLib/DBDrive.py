@@ -20,6 +20,9 @@ class DBDrive(DBObject):
 	seasons = ""
 	considerations = ""
 	directions = ""
+	imageCredits = ""
+    	coordinates = ""
+    
 		
 	def getColumns(self):
 		cols = []
@@ -41,7 +44,12 @@ class DBDrive(DBObject):
 		cols.append("seasons")
 		cols.append("considerations")
 		cols.append("directions")
+		cols.append("imageCredits")
+		cols.append("coordinates")
 		return cols
 
+	def toString(self):
+		print (driveid + "," + driveName + "," + country + "," + region + "," + startLat + "," + startLon + "," + stopLat + "," + stopLon + "," + description + "," + mileage + "," + timeToAllow + "," + favorite + "," + image + "," + mapimage + "," + restrictions + "," + seasons + "," + considerations + "," + directions + "," + imageCredits + "," + coordinates)
+		
 	def getTableName(self):
 		return "drives"

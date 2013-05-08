@@ -13,7 +13,7 @@ tree = ET.parse("byways.xml")
 elem = tree.getroot()
 byways = elem.findall("Byway")
 for byway in byways:
-	drive = DBDrive()
+    drive = DBDrive()
     drive.driveid = byway.find("id").text
     drive.driveName = byway.find("Name").text
     drive.country = "US"

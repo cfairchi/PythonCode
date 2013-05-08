@@ -2,7 +2,25 @@ import abc
 from DBObject import DBObject
 
 class DBDrive(DBObject):
-	
+	driveid = ""
+	driveName = ""
+	country = ""
+	region = ""
+	startLat = ""
+	startLon = ""
+	stopLat = ""
+	stopLon = ""
+	description = ""
+	mileage = ""
+	timeToAllow = ""
+	favorite = ""
+	image = ""
+	mapimage = ""
+	restrictions = ""
+	seasons = ""
+	considerations = ""
+	directions = ""
+		
 	def getColumns(self):
 		cols = []
 		cols.append("id")

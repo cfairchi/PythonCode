@@ -5,9 +5,9 @@ import sqlite3 as lite
 import sys
 import DBObject
 from DBDrive import DBDrive
-from sqliteDBUtils import createTable
+import sqliteDBUtils 
 
 		
 drive = DBDrive()
-createTable(drive,"BywayExplorer.db",true)
+drive.createSQLLiteTable(drive,"BywayExplorer.db",true)
 

@@ -15,7 +15,7 @@ elem = tree.getroot()
 byways = elem.findall("Byway")
 for byway in byways:
     drive = DBDrive()
-    if (byway.find("id") is not None && byway.find("id").text is not None):
+    if (byway.find("id") is not None and byway.find("id").text is not None):
     	drive.driveid = byway.find("id").text
     if (byway.find("Name").text is not None):
     	drive.driveName = byway.find("Name").text

@@ -49,8 +49,7 @@ class DBDrive(DBObject):
 		return cols
 
 	def toString(self):
-		print self.driveid
-		#print (driveid + "," + driveName + "," + country + "," + region + "," + startLat + "," + startLon + "," + stopLat + "," + stopLon + "," + description + "," + mileage + "," + timeToAllow + "," + favorite + "," + image + "," + mapimage + "," + restrictions + "," + seasons + "," + considerations + "," + directions + "," + imageCredits + "," + coordinates)
+		print (self.driveid + "," + self.driveName + "," + self.country + "," + self.region + "," + self.startLat + "," + self.startLon + "," + self.stopLat + "," + self.stopLon + "," + self.description + "," + self.mileage + "," + self.timeToAllow + "," + self.favorite + "," + self.image + "," + self.mapimage + "," + self.restrictions + "," + self.seasons + "," + self.considerations + "," + self.directions + "," + self.imageCredits) # + "," + self.coordinates)
 		
 	def getTableName(self):
 		return "drives"

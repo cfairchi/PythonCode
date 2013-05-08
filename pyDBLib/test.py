@@ -29,10 +29,10 @@ for byway in byways:
     drive.stopLon = ""
     sd = ""
     fd = ""
-    if (byway.find("ShortDescription") is not None):
+    if (byway.find("ShortDescription").text is not None):
     	sd = byway.find("ShortDescription").text
     	
-    if (byway.find("FullDescription") is not None):
+    if (byway.find("FullDescription").text is not None):
     	fd = byway.find("FullDescription").text
     	
     drive.description = sd + fd

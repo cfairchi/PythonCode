@@ -10,6 +10,10 @@ class DBObject(object):
 	
 	@abc.abstractmethod
  	def getTableName(self):
+ 		raise NotImplementedError, "Please override in derived class"
+ 		
+ 	@abc.abstractmethod
+ 	def toString(self):
  		raise NotImplementedError, "Please override in derived class" 		
 
 	def createSQLiteTable(self,theSQLiteDatabaseName,theDeleteIfExists):

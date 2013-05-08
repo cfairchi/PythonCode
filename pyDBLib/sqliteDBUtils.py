@@ -23,6 +23,6 @@ def createSQLiteTable(theDBObject, theSQLiteDatabaseName,theDeleteIfExists):
             con.rollback()
             print "Error %s:" % e.args[0]
             sys.exit(1)
-        finally:
-            if con:
-                con.close()
+    finally:
+        if con:
+            con.close()

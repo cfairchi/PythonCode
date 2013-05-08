@@ -9,5 +9,5 @@ import sqliteDBUtils
 
 		
 drive = DBDrive()
-drive.createSQLLiteTable(drive,"BywayExplorer.db",true)
+drive.createSQLiteTable("BywayExplorer.db",True)
 

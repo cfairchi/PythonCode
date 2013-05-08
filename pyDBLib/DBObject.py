@@ -1,4 +1,5 @@
 import abc
+import sqlite3
 
 class DBObject(object):
 	__metaclass__ = abc.ABCMeta
@@ -11,16 +12,16 @@ class DBObject(object):
  	def getTableName(self):
  		raise NotImplementedError, "Please override in derived class" 		
 
-	def createSQLiteTable(theDBObject, theSQLiteDatabaseName,theDeleteIfExists):
+	def createSQLiteTable(self,theSQLiteDatabaseName,theDeleteIfExists):
 	    con = None
 	    try:
-	        con = lite.connect(theSQLiteDatabaseName)
+	        con = sqlite3.connect(theSQLiteDatabaseName)
 	        cur = con.cursor()
 	        if (theDeleteIfExists):
-	            cur.execute("DROP TABLE IF EXISTS " + theDBObject.getTableName())
-	        sqlCmd = "CREATE TABLE " + theDBObject.getTableName() + "("
+	            cur.execute("DROP TABLE IF EXISTS " + self.getTableName())
+	        sqlCmd = "CREATE TABLE " + self.getTableName() + "("
 	        i = 0
-	        colNames = theDBObject.getColumns()
+	        colNames = self.getColumns()
 	        for col in colNames:
 	            if (i !=0 ):
 	                sqlCmd = sqlCmd + "," + col + " TEXT"
@@ -28,9 +29,9 @@ class DBObject(object):
 	                sqlCmd = sqlCmd + col + " TEXT"
 	        sqlCmd = sqlCmd + ")"
 	        cur.execute(sqlCmd)
-	        print("Table " + theDBObject.getTableName() + " Created")
+	        print("Table " + self.getTableName() + " Created")
 	        con.commit()
-	    except lite.Error, e:
+	    except sqlite3.Error, e:
 	        if con:
 	            con.rollback()
 	            print "Error %s:" % e.args[0]

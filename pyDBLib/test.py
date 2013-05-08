@@ -52,5 +52,8 @@ for byway in byways:
     drive.considerations = ""
     drive.directions = ""
     if (byway.find("Route") is not None):
-    	drive.coordinates = byway.find("Route")
+    	if (byway.find("Route").find("gml:LineString") is not None:
+    	    if (byway.find("Route").find("gml:LineString").find("gml:coordinates") is not None:
+    	    	drive.coordinates = byway.find("Route").find("gml:LineString").find("gml:coordinates").text
+    	    	
     drive.toString()

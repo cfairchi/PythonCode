@@ -11,8 +11,7 @@ class DBObject(object):
  	def getTableName(self):
  		raise NotImplementedError, "Please override in derived class" 		
 
-	@abc.abstractmethod
-	def createSQLiteTable(theSQLiteDatabaseName,theDeleteIfExists):
+	def __createSQLiteTable__(theSQLiteDatabaseName,theDeleteIfExists):
 		con = None
 		try:
 			con = lite.connect(theSQLiteDatabaseName)

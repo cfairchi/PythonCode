@@ -8,5 +8,5 @@ from DBDrive import DBDrive
 
 		
 drive = DBDrive()
-drive.createTable("BywayExplorer.db",true)
+drive.__createTable__("BywayExplorer.db",true)
 

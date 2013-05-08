@@ -15,13 +15,13 @@ elem = tree.getroot()
 byways = elem.findall("Byway")
 for byway in byways:
     drive = DBDrive()
-    if (byway.find("id") is not None):
+    if (byway.find("id").text is not None):
     	drive.driveid = byway.find("id").text
-    if (byway.find("Name") is not None):
+    if (byway.find("Name").text is not None):
     	drive.driveName = byway.find("Name").text
     drive.country = "US"
     if (byway.find("States") is not None):
-    	if (byway.find("State") is not None):
+    	if (byway.find("State").text is not None):
     		drive.region = byway.find("States").find("State").text
     drive.startLat = ""
     drive.startLon = ""
@@ -36,15 +36,15 @@ for byway in byways:
     	fd = byway.find("FullDescription").text
     	
     drive.description = sd + fd
-    if (byway.find("Length") is not None):
+    if (byway.find("Length").text is not None):
     	drive.mileage = byway.find("Length").text
-    if (byway.find("SuggestedTime") is not None):
+    if (byway.find("SuggestedTime").text is not None):
     	drive.timeToAllow = byway.find("SuggestedTime").text
     drive.favorite = "false"
     if (byway.find("Photo") is not None):
-    	if (byway.find("Photo").find("URL") is not None):
+    	if (byway.find("Photo").find("URL").text is not None):
     		drive.image = byway.find("Photo").find("URL").text
-    	if (byway.find("Photo").find("Credits") is not None):
+    	if (byway.find("Photo").find("Credits").text is not None):
     		drive.imageCredits = byway.find("Photo").find("Credits").text
     drive.mapimage = ""
     drive.restrictions = ""

@@ -25,7 +25,7 @@ def parseCoordinates(theDriveId, theStartIndex, theCoords):
 		point.order = index 
 		point.longitude = splitStr[0]
 		point.latitude = splitStr[1]
-		point.insert
+		point.insertIntoSQLiteDB("BywayExplorer.db")
 		index = index + 1
 		coords.append(point)
 	

@@ -1,5 +1,6 @@
 import abc
 import sqlite3
+import _mysql
 import sys
 
 class DBObject(object):
@@ -51,6 +52,8 @@ class DBObject(object):
 		finally:
 	        	if con:
 				con.close()
+	
+	def createMySQLTable(self,theDBName, theDeleteIfItExists):
 	
 	def createSQLiteTable(self,theSQLiteDatabaseName,theDeleteIfExists):
 	    con = None

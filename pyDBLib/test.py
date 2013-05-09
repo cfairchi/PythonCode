@@ -91,6 +91,11 @@ for byway in byways:
     if (byway.find("Photo") is not None):
     	if (byway.find("Photo").find("URL") is not None and byway.find("Photo").find("URL").text is not None):
     		drive.image = byway.find("Photo").find("URL").text
+    		if (drive.image != ""):
+    			print("Saving " + drive.image + " into " + drive.driveid + "_image.jpg")
+    			with open(drive.driveid + "_image","wb") as f:
+                        	f.write(urllib2.urlopen(drive.image).read())
+                        
     	if (byway.find("Photo").find("Credits") is not None and byway.find("Photo").find("Credits").text is not None):
     		drive.imageCredits = byway.find("Photo").find("Credits").text
     drive.mapimage = ""

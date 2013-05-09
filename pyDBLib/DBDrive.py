@@ -21,8 +21,31 @@ class DBDrive(DBObject):
 	considerations = ""
 	directions = ""
 	imageCredits = ""
-    	coordinates = ""
+    coordinates = ""
     
+	def getValues(self):
+    	values = {}
+    	values["driveid"] = self.driveid
+    	values["driveName"] = self.driveName
+		values["country"] = self.country
+		values["region"] = self.region
+		values["startLat"] = self.startLat
+		values["startLon"] = self.startLon
+		values["stopLat"] = self.stopLat
+		values["stopLon"] = self.stopLon
+		values["description"] = self.description
+		values["mileage"] = self.mileage
+		values["timeToAllow"] = self.timeToAllow
+		values["favorite"] = self.favorite
+		values["image"] = self.image
+		values["mapimage"] = self.mapImage
+		values["restrictions"] = self.restrictions
+		values["seasons"] = self.seasons
+		values["considerations"] = self.considerations
+		values["directions"] = self.directions
+		values["imageCredits"] = self.imageCredits
+    	values["coordinates"] = self.coordinates
+    	return values
 		
 	def getColumns(self):
 		cols = []

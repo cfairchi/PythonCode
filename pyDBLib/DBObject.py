@@ -1,5 +1,6 @@
 import abc
 import sqlite3
+import sys
 
 class DBObject(object):
 	__metaclass__ = abc.ABCMeta
@@ -39,15 +40,14 @@ class DBObject(object):
 			print("INSERT INTO " + self.getTableName() + valString)
 			cur.execute("INSERT INTO " + self.getTableName() + valString)
 			con.commit()
-			
-	    except sqlite3.Error, e:
-	        if con:
-	            con.rollback()
-	            print "Error %s:" % e.args[0]
-	            sys.exit(1)
-	    finally:
-	        if con:
-			con.close()
+	   	except sqlite3.Error, e:
+	        	if con:
+		            con.rollback()
+		            print "Error %s:" % e.args[0]
+	        	    sys.exit(1)
+		finally:
+	        	if con:
+				con.close()
 	
 	def createSQLiteTable(self,theSQLiteDatabaseName,theDeleteIfExists):
 	    con = None

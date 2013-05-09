@@ -21,12 +21,12 @@ class DBDrive(DBObject):
 	considerations = ""
 	directions = ""
 	imageCredits = ""
-    coordinates = ""
+    	coordinates = ""
     
 	def getValues(self):
-    	values = {}
-    	values["driveid"] = self.driveid
-    	values["driveName"] = self.driveName
+    		values = {}
+    		values["driveid"] = self.driveid
+	    	values["driveName"] = self.driveName
 		values["country"] = self.country
 		values["region"] = self.region
 		values["startLat"] = self.startLat
@@ -38,18 +38,18 @@ class DBDrive(DBObject):
 		values["timeToAllow"] = self.timeToAllow
 		values["favorite"] = self.favorite
 		values["image"] = self.image
-		values["mapimage"] = self.mapImage
+		values["mapimage"] = self.mapimage
 		values["restrictions"] = self.restrictions
 		values["seasons"] = self.seasons
 		values["considerations"] = self.considerations
 		values["directions"] = self.directions
 		values["imageCredits"] = self.imageCredits
-    	values["coordinates"] = self.coordinates
-    	return values
+	    	values["coordinates"] = self.coordinates
+    		return values
 		
 	def getColumns(self):
 		cols = []
-		cols.append(["id","TEXT"])
+		cols.append(["driveid","TEXT"])
 		cols.append(["driveName","TEXT"])
 		cols.append(["country","TEXT"])
 		cols.append(["region","TEXT"])

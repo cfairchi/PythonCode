@@ -99,8 +99,6 @@ for byway in byways:
 	elif (route.find(ls) is not None):
 		routeCoords = findLineString(drive.driveid, route, 0)
 
-	#for point in rootCoords:
-	#	print(point.toString())
 	breakIndex = breakIndex + 1
 	if (breakIndex > 5):
 		break	 	    	

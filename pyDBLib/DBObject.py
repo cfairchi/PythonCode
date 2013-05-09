@@ -36,7 +36,7 @@ class DBObject(object):
 	        		if (col[1] == "TEXT"):
 	        			valString = valString + "'" + values[col[0]] + "'"
 	        	valString = valString + ")"
-	        	
+	        		colIndex = colIndex + 1
 			print("INSERT INTO " + self.getTableName() + valString)
 			cur.execute("INSERT INTO " + self.getTableName() + valString)
 			con.commit()

@@ -111,5 +111,7 @@ for byway in byways:
 
 	breakIndex = breakIndex + 1
 #	if (breakIndex > 5):
-#		break	 	    	
+#		break	 	 
+	
 	drive.insertIntoSQLiteDB("BywayExplorer.db")
+	print drive.driveid

@@ -30,12 +30,12 @@ def parseCoordinates(theDriveId, theStartIndex, theCoords):
 	return coords
 	
 
-def findLineString(route, theStartIndex):
+def findLineString(theDriveId, route, theStartIndex):
 	routeCoords = []
 	if (route.find(ls) is not None):
 		print("Found LineString")
     		if (route.find(ls).find(cs) is not None):
-			routeCoords = parseCoordinates(theStartIndex, route.find(ls).find(cs).text)
+			routeCoords = parseCoordinates(theDriveId, theStartIndex, route.find(ls).find(cs).text)
 	return routeCoords
 	
 	
@@ -91,10 +91,15 @@ for byway in byways:
     if (byway.find("Route") is not None):
     	route = byway.find("Route")
 	if (route.find(mls) is not None):
+		startIndex = 0
+		rootCoords = []
 		for lineStringMember in route.find(mls).findall(lsm):
-			findLineString(lineStringMember)
+			tRootCoords = findLineString(drive.driveid, lineStringMember, len(rootCoords))
+			rootCoords = rootCoords + tRootCoords
+			
+			
 	elif (route.find(ls) is not None):
-		routeCoords = findLineString(route)
+		routeCoords = findLineString(drive.driveid, route, 0)
 		print(rootCoords)
 		
     	    	

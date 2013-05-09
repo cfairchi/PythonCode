@@ -13,7 +13,17 @@ mls = "{http://www.opengis.net/gml}MultiLineString"
 lsm = "{http://www.opengis.net/gml}lineStringMember"
 ls = "{http://www.opengis.net/gml}LineString"
 cs = "{http://www.opengis.net/gml}coordinates"
-    
+ 
+def clean(theTxt):
+    try:
+        theTxt = theTxt.encode('ascii','ignore')
+        theTxt = theTxt.replace("\n","")
+        theTxt = theTxt.replace(";",",")
+        theTxt = theTxt.strip()
+        return theTxt
+    except Exception, err:
+        sys.stderr.write('ERROR in clean(): %s\n' % str(err))
+        
 def parseCoordinates(theDriveId, theStartIndex, theCoords):
 	coords = []
 	index = theStartIndex
@@ -72,7 +82,7 @@ for byway in byways:
     if (byway.find("FullDescription") is not None and byway.find("FullDescription").text is not None):
     	fd = byway.find("FullDescription").text
     	
-    drive.description = sd + fd
+    drive.description = clean(sd + fd)
     if (byway.find("Length") is not None and byway.find("Length").text is not None):
     	drive.mileage = byway.find("Length").text
     if (byway.find("SuggestedTime") is not None and byway.find("SuggestedTime").text is not None):

@@ -10,7 +10,8 @@ class DBDrive(DBObject):
 	startLon = ""
 	stopLat = ""
 	stopLon = ""
-	description = ""
+	shortDescription = ""
+	longDescription = ""
 	mileage = ""
 	timeToAllow = ""
 	favorite = ""
@@ -33,7 +34,8 @@ class DBDrive(DBObject):
 		values["startLon"] = self.startLon
 		values["stopLat"] = self.stopLat
 		values["stopLon"] = self.stopLon
-		values["description"] = self.description
+		values["shortDescription"] = self.shortDescription
+		values["longDescription"] = self.longDescription
 		values["mileage"] = self.mileage
 		values["timeToAllow"] = self.timeToAllow
 		values["favorite"] = self.favorite
@@ -57,7 +59,8 @@ class DBDrive(DBObject):
 		cols.append(["startLon","TEXT"])
 		cols.append(["stopLat","TEXT"])
 		cols.append(["stopLon","TEXT"])
-		cols.append(["description","TEXT"])
+		cols.append(["shortDescription","TEXT"])
+		cols.append(["longDescription","TEXT"])
 		cols.append(["mileage","TEXT"])
 		cols.append(["timeToAllow","TEXT"])
 		cols.append(["favorite","TEXT"])
@@ -72,7 +75,7 @@ class DBDrive(DBObject):
 		return cols
 
 	def toString(self):
-		print (self.driveid + "," + self.driveName + "," + self.country + "," + self.region + "," + self.startLat + "," + self.startLon + "," + self.stopLat + "," + self.stopLon + "," + self.description + "," + self.mileage + "," + self.timeToAllow + "," + self.favorite + "," + self.image + "," + self.mapimage + "," + self.restrictions + "," + self.seasons + "," + self.considerations + "," + self.directions + "," + self.imageCredits + "," + self.coordinates)
+		print (self.driveid + "," + self.driveName + "," + self.country + "," + self.region + "," + self.startLat + "," + self.startLon + "," + self.stopLat + "," + self.stopLon + "," + self.shortDescription  + "," + self.longDescription + "," + self.mileage + "," + self.timeToAllow + "," + self.favorite + "," + self.image + "," + self.mapimage + "," + self.restrictions + "," + self.seasons + "," + self.considerations + "," + self.directions + "," + self.imageCredits + "," + self.coordinates)
 		
 	def getTableName(self):
 		return "drives"

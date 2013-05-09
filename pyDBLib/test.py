@@ -6,8 +6,24 @@ import sys
 import DBObject
 from DBDrive import DBDrive
 import xml.etree.ElementTree as ET
-		
 
+mls = "{http://www.opengis.net/gml}MultiLineString"
+lsm = "{http://www.opengis.net/gml}lineStringMember"
+ls = "{http://www.opengis.net/gml}LineString"
+cs = "{http://www.opengis.net/gml}coordinates"
+    
+def findLineString(route):
+	if (route.find(ls) is not None):
+		print("Found LineString")
+    		if (route.find(ls).find(cs) is not None):
+			print("Found Coordinates")
+			#drive.coordinates = route.find(ls).find(cs).text
+			return route.find(ls).find(cs).text
+			#print(drive.coordinates)
+	
+	
+	
+	
 drive = DBDrive()
 drive.createSQLiteTable("BywayExplorer.db",True)
 tree = ET.parse("byways.xml")
@@ -51,15 +67,16 @@ for byway in byways:
     drive.seasons = ""
     drive.considerations = ""
     drive.directions = ""
-    ls = "{http://www.opengis.net/gml}LineString"
-    cs = "{http://www.opengis.net/gml}coordinates"
+    
     if (byway.find("Route") is not None):
+    	route = byway.find("Route")
 	print("Found Route")
-    	if (byway.find("Route").find(ls) is not None):
-		print("Found LineString")
-    		if (byway.find("Route").find(ls).find(cs) is not None):
-			print("Found Coordinates")
-			drive.coordinates = byway.find("Route").find(ls).find(cs).text
-			print(drive.coordinates)
+	if (route.find(mls) is not None):
+		print("Found MultiLineString")
+		for lineStringMember in route.find(mls).findall(lsm):
+			findLineString(lineStringMember)
+	elif (route.find(ls) is not None):
+		findLineString(route)
+		
     	    	
     #drive.toString()

@@ -25,7 +25,9 @@ def clean(theTxt):
         sys.stderr.write('ERROR in clean(): %s\n' % str(err))
         
 def parseCoordinates(theDriveId, theStartIndex, theCoords):
+	
 	coords = []
+	return coords
 	index = theStartIndex
 	splitCoords = theCoords.split(" ")
 	for i in range(0,len(splitCoords)-1):
@@ -37,7 +39,7 @@ def parseCoordinates(theDriveId, theStartIndex, theCoords):
 		point.latitude = splitStr[1]
 		point.insertIntoSQLiteDB("BywayExplorer.db")
 		index = index + 1
-		coords.append(point)
+	#	coords.append(point)
 	
 	return coords
 	
@@ -90,6 +92,7 @@ for byway in byways:
     drive.favorite = "false"
     if (byway.find("Photo") is not None):
     	if (byway.find("Photo").find("URL") is not None and byway.find("Photo").find("URL").text is not None):
+		print(byway.find("Photo".find("URL").text))
     		drive.image = byway.find("Photo").find("URL").text
     		if (drive.image != ""):
     			print("Saving " + drive.image + " into " + drive.driveid + "_image.jpg")

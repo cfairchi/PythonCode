@@ -34,9 +34,9 @@ class DBObject(object):
 	        		if (colIndex > 0):
 	        			valString = valString + ","
 	        		if (col[1] == "INT"):
-					valString = valString + str(values[col[0]])
+					valString = valString + str(values[col[0]]).replace("'","''")
 				else:
-	        			valString = valString + "'" + values[col[0]] + "'"
+	        			valString = valString + "'" + values[col[0]].replace("'","''") + "'"
 				colIndex = colIndex + 1
 	        	valString = valString + ")"
 			

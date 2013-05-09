@@ -100,6 +100,6 @@ for byway in byways:
 		routeCoords = findLineString(drive.driveid, route, 0)
 
 	breakIndex = breakIndex + 1
-	if (breakIndex > 5):
-		break	 	    	
+#	if (breakIndex > 5):
+#		break	 	    	
 	drive.insertIntoSQLiteDB("BywayExplorer.db")

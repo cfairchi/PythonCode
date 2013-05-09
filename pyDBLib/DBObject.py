@@ -40,7 +40,7 @@ class DBObject(object):
 				colIndex = colIndex + 1
 	        	valString = valString + ")"
 			
-			print("INSERT INTO " + self.getTableName() + valString)
+			#print("INSERT INTO " + self.getTableName() + valString)
 			cur.execute("INSERT INTO " + self.getTableName() + valString)
 			con.commit()
 	   	except sqlite3.Error, e:

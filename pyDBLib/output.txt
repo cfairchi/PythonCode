@@ -1,0 +1,126 @@
+Table drives Created
+Table coordinates Created
+INSERT INTO coordinates VALUES('2556''29.427160000000129''-81.102570000000014')
+INSERT INTO coordinates VALUES('2556''29.434259000000054''-81.105858000000012')
+INSERT INTO coordinates VALUES('2556''29.435110000000122''-81.106392000000028')
+INSERT INTO coordinates VALUES('2556''29.436340000000087''-81.10740699999991')
+INSERT INTO coordinates VALUES('2556''29.436640000000068''-81.107596999999998')
+INSERT INTO coordinates VALUES('2556''29.438881000000038''-81.10867300000001')
+INSERT INTO coordinates VALUES('2556''29.440821000000142''-81.109450999999979')
+INSERT INTO coordinates VALUES('2556''29.44315899999998''-81.109900999999923')
+INSERT INTO coordinates VALUES('2556''29.444799000000103''-81.11057999999997')
+INSERT INTO coordinates VALUES('2556''29.460091000000091''-81.117400999999916')
+INSERT INTO coordinates VALUES('2556''29.474039000000062''-81.123969999999986')
+INSERT INTO coordinates VALUES('2556''29.477809999999977''-81.125847000000022')
+INSERT INTO coordinates VALUES('2556''29.485901000000069''-81.129737999999975')
+INSERT INTO coordinates VALUES('2556''29.489428999999973''-81.131568999999956')
+INSERT INTO coordinates VALUES('2556''29.492680000000007''-81.133178999999927')
+INSERT INTO coordinates VALUES('2556''29.501200000000097''-81.137221999999952')
+INSERT INTO coordinates VALUES('2556''29.509970000000067''-81.141541000000018')
+INSERT INTO coordinates VALUES('2556''29.51273900000001''-81.14295199999998')
+INSERT INTO coordinates VALUES('2556''29.515099999999961''-81.144577000000027')
+INSERT INTO drives VALUES('2556''A1A Ocean Shore Scenic Highway''US''''''''''''Take a step back in time and imagine a world where sea oats sway rhythmically in the salty breeze and giant turtles bury their eggs along the base of pristine sand dunes.<p>A Tale of Two Cities. . . Take a step back in time and imagine a world where sea oats sway rhythmically in the salty breeze and giant turtles bury their eggs along the base of pristine sand dunes... a place where the delicate cries of seagulls can be heard above the hypnotic sounds of crashing surf... and a place where man is in total harmony with nature. Through this glimpse of "Old Florida", you have just entered the unspoiled and forgotten worlds of Flagler Beach and Beverly Beach.</p>
+
+<p>As you drive along A1A Ocean Shore Scenic Highway, you will discover a world of tranquility and beauty unaffected by time and industry. The aroma of fresh salt air will tantalize your senses and your eyes will feast themselves on an unobstructed ocean view which extends for over seven miles. You may spot a fisherman casting his line from the famous Flagler Beach pier, or perhaps you will encounter a group of young surfers taking advantage of some of the best waves along the eastern seaboard.</p>
+
+<p>While you are here, you may wish to stroll through the Flagler Beach Historical District and Museum, or possibly enjoy an eco-tour along the miles of nature trails offered at the numerous preserves, parks and campgrounds. A bicycle/pedestrian path traverses the entire scenic corridor and provides recreational opportunities for the cyclist, jogger and those who just wish to take a peaceful walk.</p>
+
+<p>Marshlands and estuaries afford the interested visitor the unique experience of observing rare and endangered birds such as the roseate spoonbill, wood stork, blue heron and osprey in their natural habitat. Dolphin can often be seen weaving playfully in the wake of passing boats, and manatee become especially plentiful in the waterway during the spring and summer months. Flagler Beach and Beverly Beach are also known to be nesting grounds for giant sea turtles as well as a myriad of other wildlife including box and gopher turtles, armadillo and ghost crabs. Large pelicans fly along the dunes and are amazingly close to breaking surf.</p>
+
+<p>Whatever your interests, we are positive you will thoroughly relish your coastal tour along the A1A Ocean Shore Scenic Highway and will want to return year after year to this land of natural treasures.</p>
+
+''7''15 minutes.''false''''''''''''''''')
+INSERT INTO coordinates VALUES('2557''29.704518999999948''-81.227837000000022')
+INSERT INTO coordinates VALUES('2557''29.701611000000071''-81.227012999999999')
+INSERT INTO coordinates VALUES('2557''29.698280000000125''-81.225807000000032')
+INSERT INTO coordinates VALUES('2557''29.68981000000008''-81.223395999999923')
+INSERT INTO coordinates VALUES('2557''29.688689999999951''-81.223121999999989')
+INSERT INTO coordinates VALUES('2557''29.6869200000001''-81.222770999999909')
+INSERT INTO coordinates VALUES('2557''29.68231000000003''-81.221930999999927')
+INSERT INTO coordinates VALUES('2557''29.681179000000043''-81.221610999999939')
+INSERT INTO coordinates VALUES('2557''29.680099000000041''-81.221099999999922')
+INSERT INTO coordinates VALUES('2557''29.679399000000046''-81.220641999999941')
+INSERT INTO coordinates VALUES('2557''29.678779999999961''-81.220153999999923')
+INSERT INTO coordinates VALUES('2557''29.678329000000133''-81.21974199999994')
+INSERT INTO coordinates VALUES('2557''29.674601000000052''-81.215781999999933')
+INSERT INTO coordinates VALUES('2557''29.673630000000003''-81.215026999999964')
+INSERT INTO coordinates VALUES('2557''29.672661000000119''-81.214499999999987')
+INSERT INTO coordinates VALUES('2557''29.672230000000013''-81.214310000000012')
+INSERT INTO coordinates VALUES('2557''29.671410000000037''-81.214049999999986')
+INSERT INTO coordinates VALUES('2557''29.67011100000002''-81.213722000000018')
+INSERT INTO coordinates VALUES('2557''29.668390000000045''-81.213172999999983')
+INSERT INTO coordinates VALUES('2557''29.65427000000011''-81.207160999999928')
+INSERT INTO coordinates VALUES('2557''29.653460000000052''-81.206946999999957')
+INSERT INTO coordinates VALUES('2557''29.653090000000134''-81.206940000000031')
+INSERT INTO coordinates VALUES('2557''29.650459000000069''-81.207442999999955')
+INSERT INTO coordinates VALUES('2557''29.649900000000002''-81.207496999999989')
+INSERT INTO coordinates VALUES('2557''29.649179000000004''-81.207442999999955')
+INSERT INTO coordinates VALUES('2557''29.64864''-81.207267999999999')
+INSERT INTO coordinates VALUES('2557''29.648080999999934''-81.206970000000013')
+INSERT INTO coordinates VALUES('2557''29.647511000000065''-81.206520000000012')
+INSERT INTO coordinates VALUES('2557''29.645260000000121''-81.204207999999994')
+INSERT INTO coordinates VALUES('2557''29.64487100000008''-81.203888000000006')
+INSERT INTO coordinates VALUES('2557''29.644239000000027''-81.20359000000002')
+INSERT INTO coordinates VALUES('2557''29.64373999999998''-81.203490999999929')
+INSERT INTO coordinates VALUES('2557''29.642928999999981''-81.203490999999929')
+INSERT INTO coordinates VALUES('2557''29.636841000000061''-81.204085999999961')
+INSERT INTO coordinates VALUES('2557''29.632681000000105''-81.204581999999959')
+INSERT INTO coordinates VALUES('2557''29.629950000000122''-81.204825999999969')
+INSERT INTO coordinates VALUES('2557''29.625059000000078''-81.205367999999964')
+INSERT INTO coordinates VALUES('2557''29.624001000000078''-81.205367999999964')
+INSERT INTO coordinates VALUES('2557''29.623118999999974''-81.205253999999968')
+INSERT INTO coordinates VALUES('2557''29.621201000000042''-81.20475799999997')
+INSERT INTO coordinates VALUES('2557''29.618151000000125''-81.203888000000006')
+INSERT INTO coordinates VALUES('2557''29.617139999999949''-81.203522000000021')
+INSERT INTO coordinates VALUES('2557''29.592230000000029''-81.193770999999913')
+INSERT INTO coordinates VALUES('2557''29.591440000000034''-81.193381999999986')
+INSERT INTO coordinates VALUES('2557''29.59063900000001''-81.192702999999938')
+INSERT INTO coordinates VALUES('2557''29.589680000000044''-81.191681000000017')
+INSERT INTO coordinates VALUES('2557''29.589210999999978''-81.191277000000014')
+INSERT INTO coordinates VALUES('2557''29.588680000000068''-81.190910000000031')
+INSERT INTO coordinates VALUES('2557''29.588130999999976''-81.190627999999947')
+INSERT INTO coordinates VALUES('2557''29.578091000000029''-81.187118999999939')
+INSERT INTO coordinates VALUES('2557''29.57313900000014''-81.185042999999951')
+INSERT INTO coordinates VALUES('2557''29.566910000000064''-81.18232699999993')
+INSERT INTO coordinates VALUES('2557''29.566080000000113''-81.181930999999963')
+INSERT INTO coordinates VALUES('2557''29.56539900000007''-81.181479999999965')
+INSERT INTO coordinates VALUES('2557''29.564720000000023''-81.18081699999999')
+INSERT INTO coordinates VALUES('2557''29.563971000000095''-81.179732999999999')
+INSERT INTO coordinates VALUES('2557''29.563589000000093''-81.178901999999994')
+INSERT INTO coordinates VALUES('2557''29.563329999999951''-81.178000999999938')
+INSERT INTO coordinates VALUES('2557''29.563230999999973''-81.177452000000017')
+INSERT INTO coordinates VALUES('2557''29.5631810000001''-81.176781000000005')
+INSERT INTO coordinates VALUES('2557''29.563240000000008''-81.173667999999964')
+INSERT INTO coordinates VALUES('2557''29.563200000000052''-81.171997000000033')
+INSERT INTO coordinates VALUES('2557''29.563069999999925''-81.171082000000013')
+INSERT INTO coordinates VALUES('2557''29.562860000000001''-81.170340999999951')
+INSERT INTO coordinates VALUES('2557''29.562670000000082''-81.169806999999992')
+INSERT INTO coordinates VALUES('2557''29.56234000000012''-81.169167000000016')
+INSERT INTO coordinates VALUES('2557''29.561840000000132''-81.168418999999915')
+INSERT INTO coordinates VALUES('2557''29.561109999999985''-81.167664000000002')
+INSERT INTO coordinates VALUES('2557''29.56031999999999''-81.167090999999971')
+INSERT INTO coordinates VALUES('2557''29.555950000000053''-81.164969999999926')
+INSERT INTO coordinates VALUES('2557''29.549950000000081''-81.161957000000029')
+INSERT INTO coordinates VALUES('2557''29.530979000000002''-81.152602999999942')
+INSERT INTO drives VALUES('2557''A1A River to Sea Trail''US''''''''''''The A1A River & Sea Trail Scenic Highway reflects many images of "Old Florida" which are rapidly becoming extinct and should be preserved.<p>The story of the A1A River to Sea Trail Scenic Highway is the story of man's existence with nature and the importance of the river and the sea. </p>
+
+
+
+<p>Along this byway, evidence has been discovered of the earliest inhabitants of the corridor: prehistoric animals such as the mastodon, camel, tapir and sloth. The native inhabitants of Central Florida migrated seasonally to enjoy this area's variety of resources, as evidenced by the shell middens and sand burial mounds. Remnants remain in sites along the corridor. The Spanish (1565-1763) were interested in the area as a military outpost and a point of departure for missionaries to establish missions among the native inhabitants. </p>
+
+
+
+<p>The English (1763-1783) were quick to recognize the importance of the area for its naval stores (tar, pitch, turpentine and resin used for caulking and rigging wooden ships), the availability of oak for shipbuilding, and the transportation accessibility because of the river to sea link. </p>
+
+
+
+<p>During the Second Spanish Period (1783-1821) there was a renewed interest in the corridor, with Spain seeking to turn the area into a profitable agricultural complex.  Several Spanish plantations were built in the area and the archaeological remains of General Joseph Hernandez's MalaCompra Plantation is located at Bings Landing Park.  In this area they grew sea island cotton, sugar, and oranges. </p>
+
+
+
+<p>An oceanarium was constructed in 1938 as the world's first underwater motion picture studio.  From its opening, the oceanarium drew interested visitors and became one of Florida's leading tourist attractions.  Now known as Marineland, the oceanarium is listed in the National Register of Historic Places.  After World War II, Marineland became a "watering hole" for literary icons such as Ernest Hemingway, Thornton Wilder and Marjorie Kinnan Rawlings, whose husband, Norton Baskin, operated the Dolphin Restaurant.  Marineland is still being enjoyed by visitors today. </p>
+
+
+
+<p>The A1A River &amp; Sea Trail Scenic Highway still reflects many images of "Old Florida" which are rapidly becoming extinct and should be preserved.</p>''12''20 minutes.''false''''''''''''''''')
+Error near "s": syntax error:

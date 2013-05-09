@@ -20,7 +20,7 @@ class DBObject(object):
  	def getValues(self):
  		raise NotImplementedError, "Please override in derived class" 		
 
-	def insertIntoDB(self, theSQLiteDatabaseName):
+	def insertIntoSQLiteDB(self, theSQLiteDatabaseName):
 		con = None
 		try:
 			con = sqlite3.connect(theSQLiteDatabaseName)

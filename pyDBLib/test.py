@@ -104,4 +104,4 @@ for byway in byways:
 	breakIndex = breakIndex + 1
 	if (breakIndex > 5):
 		break	 	    	
-	drive.toString()
+	drive.insertIntoSQLiteDB("BywayExplorer.db")

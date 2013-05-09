@@ -33,10 +33,13 @@ class DBObject(object):
 	        	for col in colNames:
 	        		if (colIndex > 0):
 	        			valString = valString + ","
-	        		if (col[1] == "TEXT"):
+	        		if (col[1] == "INT"):
+					valString = valString + str(values[col[0]])
+				else:
 	        			valString = valString + "'" + values[col[0]] + "'"
+				colIndex = colIndex + 1
 	        	valString = valString + ")"
-	        		colIndex = colIndex + 1
+			
 			print("INSERT INTO " + self.getTableName() + valString)
 			cur.execute("INSERT INTO " + self.getTableName() + valString)
 			con.commit()
@@ -64,7 +67,9 @@ class DBObject(object):
 	                sqlCmd = sqlCmd + "," + col[0] + " " + col[1]
 	            else:
 	                sqlCmd = sqlCmd + col[0] + " " + col[1]
+		    i +=1;
 	        sqlCmd = sqlCmd + ")"
+		print(sqlCmd)
 	        cur.execute(sqlCmd)
 	        print("Table " + self.getTableName() + " Created")
 	        con.commit()

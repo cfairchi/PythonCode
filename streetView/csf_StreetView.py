@@ -9,10 +9,7 @@ from cf_geo import distanceKM
 from cf_geo import bearing
 from GoogleAPIKey import getGoogleAPIKey
 
-def generateVideoFromKML(thekml, theVideoFileName):
-    content = thekml.split('<LineString>')
-    allcoords = str(content[1])
-    coords = allcoords.split(' ')
+def generateVideoFromCoords(theCoords, theVideoFileName):
     i = 0
     fourcc = cv.CV_FOURCC('P','I','M','1')
     outFile = theVideoFileName + ".mpeg"
@@ -50,5 +47,13 @@ def generateVideoFromKML(thekml, theVideoFileName):
             print i
             i+=1
     print str(i) + " Images Processed"
+    
+    
+def generateVideoFromKML(thekml, theVideoFileName):
+    content = thekml.split('<LineString>')
+    allcoords = str(content[1])
+    coords = allcoords.split(' ')
+    generateVideoFromCoords(coords,theVideoFileName)
+    
     
         

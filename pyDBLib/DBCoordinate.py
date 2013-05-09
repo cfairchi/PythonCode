@@ -9,10 +9,10 @@ class DBCoordinate(DBObject):
 
     def getColumns(self):
         cols = []
-        cols.append("driveid")
-        cols.append("order")
-        cols.append("latitude")
-        cols.append("longitude")
+        cols.append(["driveid","TEXT"])
+        cols.append(["order","INT"])
+        cols.append(["latitude","TEXT"])
+        cols.append(["longitude","TEXT"])
         return cols
 
     def toString(self):

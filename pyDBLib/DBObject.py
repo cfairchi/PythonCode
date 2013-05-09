@@ -14,6 +14,10 @@ class DBObject(object):
  		
  	@abc.abstractmethod
  	def toString(self):
+ 		raise NotImplementedError, "Please override in derived class"
+ 		
+ 	@abc.abstractmethod
+ 	def getValues(self):
  		raise NotImplementedError, "Please override in derived class" 		
 
 	def insertIntoDB(self, theSQLiteDatabaseName):

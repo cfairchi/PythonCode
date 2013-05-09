@@ -90,17 +90,19 @@ for byway in byways:
     if (byway.find("SuggestedTime") is not None and byway.find("SuggestedTime").text is not None):
     	drive.timeToAllow = byway.find("SuggestedTime").text
     drive.favorite = "false"
-    if (byway.find("Photo") is not None):
-    	if (byway.find("Photo").find("URL") is not None and byway.find("Photo").find("URL").text is not None):
-		print(byway.find("Photo".find("URL").text))
-    		drive.image = byway.find("Photo").find("URL").text
+    if (byway.find("Photo") is not None and byway.find("Photo").find("Asset") is not None):
+    	asset = byway.find("Photo").find("Asset")
+    	if (asset.find("URL") is not None and asset.find("URL").text is not None):
+		url = asset.find("URL").text
+		print(url)
+    		drive.image = url
     		if (drive.image != ""):
-    			print("Saving " + drive.image + " into " + drive.driveid + "_image.jpg")
+    			print("Saving " + url + " into " + drive.driveid + "_image.jpg")
     			with open(drive.driveid + "_image","wb") as f:
-                        	f.write(urllib2.urlopen(drive.image).read())
+                        	f.write(urllib2.urlopen(url).read())
                         
-    	if (byway.find("Photo").find("Credits") is not None and byway.find("Photo").find("Credits").text is not None):
-    		drive.imageCredits = byway.find("Photo").find("Credits").text
+    	if (asset.find("Credits") is not None and asset.find("Credits").text is not None):
+    		drive.imageCredits = asset.find("Credits").text
     drive.mapimage = ""
     drive.restrictions = ""
     drive.seasons = ""

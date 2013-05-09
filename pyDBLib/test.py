@@ -95,11 +95,10 @@ for byway in byways:
     	asset = byway.find("Photo").find("Asset")
     	if (asset.find("URL") is not None and asset.find("URL").text is not None):
 		url = asset.find("URL").text
-		print(url)
     		drive.image = url
     		if (drive.image != ""):
     			print("Saving " + url + " into " + drive.driveid + "_image.jpg")
-    			with open(drive.driveid + "_image","wb") as f:
+    			with open("./images/image_" + drive.driveid + ".jpg","wb") as f:
                         	f.write(urllib2.urlopen(url).read())
                         
     	if (asset.find("Credits") is not None and asset.find("Credits").text is not None):

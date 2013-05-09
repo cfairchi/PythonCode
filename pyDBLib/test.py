@@ -14,22 +14,29 @@ lsm = "{http://www.opengis.net/gml}lineStringMember"
 ls = "{http://www.opengis.net/gml}LineString"
 cs = "{http://www.opengis.net/gml}coordinates"
     
-def parseCoordinates(theStartIndex, theCoords):
+def parseCoordinates(theDriveId, theStartIndex, theCoords):
 	coords = []
+	index = theStartIndex
 	splitCoords = theCoords.split(" ")
 	for i in range(0,len(splitCoords),2):
 		point = DBCoordinate()
-		point.
-		
+		point.driveid = theDriveId
+		point.order = index 
+		point longitude = splitCoords[i]
+		point.latitide = splitCoords[i+1]
+		index = index + 1
+		coords.append(point)
 	
 	return coords
 	
 
 def findLineString(route, theStartIndex):
+	routeCoords = []
 	if (route.find(ls) is not None):
 		print("Found LineString")
     		if (route.find(ls).find(cs) is not None):
-			return parseCoordinates(theStartIndex, route.find(ls).find(cs).text)
+			routeCoords = parseCoordinates(theStartIndex, route.find(ls).find(cs).text)
+	return routeCoords
 	
 	
 	
@@ -87,7 +94,8 @@ for byway in byways:
 		for lineStringMember in route.find(mls).findall(lsm):
 			findLineString(lineStringMember)
 	elif (route.find(ls) is not None):
-		findLineString(route)
+		routeCoords = findLineString(route)
+		print(rootCoords)
 		
     	    	
     #drive.toString()

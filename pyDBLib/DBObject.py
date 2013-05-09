@@ -25,9 +25,10 @@ class DBObject(object):
 		try:
 			con = sqlite3.connect(theSQLiteDatabaseName)
 			cur = con.cursor()
+			print("INSERT INTO " + self.getTableName() + " VALUES(" + self.getValues() + ")")
 			cur.execute("INSERT INTO " + self.getTableName() + " VALUES(" + self.getValues() + ")"
 			con.commit()
-			print("INSERT INTO " + self.getTableName() + " VALUES(" + self.getValues() + ")")
+			
 	    except sqlite3.Error, e:
 	        if con:
 	            con.rollback()

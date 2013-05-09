@@ -5,6 +5,8 @@ import sqlite3 as lite
 import sys
 import DBObject
 from DBDrive import DBDrive
+from DBCoordinate import DBCoordinate
+
 import xml.etree.ElementTree as ET
 
 mls = "{http://www.opengis.net/gml}MultiLineString"
@@ -12,23 +14,34 @@ lsm = "{http://www.opengis.net/gml}lineStringMember"
 ls = "{http://www.opengis.net/gml}LineString"
 cs = "{http://www.opengis.net/gml}coordinates"
     
-def findLineString(route):
+def parseCoordinates(theStartIndex, theCoords):
+	coords = []
+	splitCoords = theCoords.split(" ")
+	for i in range(0,len(splitCoords),2):
+		point = DBCoordinate()
+		point.
+		
+	
+	return coords
+	
+
+def findLineString(route, theStartIndex):
 	if (route.find(ls) is not None):
 		print("Found LineString")
     		if (route.find(ls).find(cs) is not None):
-			print("Found Coordinates")
-			#drive.coordinates = route.find(ls).find(cs).text
-			return route.find(ls).find(cs).text
-			#print(drive.coordinates)
+			return parseCoordinates(theStartIndex, route.find(ls).find(cs).text)
 	
 	
 	
 	
 drive = DBDrive()
 drive.createSQLiteTable("BywayExplorer.db",True)
+coord = DBCoordinate()
+coord.createSQLiteTable("BywayExplorer.db",True)
 tree = ET.parse("byways.xml")
 elem = tree.getroot()
 byways = elem.findall("Byway")
+
 for byway in byways:
     drive = DBDrive()
     if (byway.find("id") is not None and byway.find("id").text is not None):
@@ -70,9 +83,7 @@ for byway in byways:
     
     if (byway.find("Route") is not None):
     	route = byway.find("Route")
-	print("Found Route")
 	if (route.find(mls) is not None):
-		print("Found MultiLineString")
 		for lineStringMember in route.find(mls).findall(lsm):
 			findLineString(lineStringMember)
 	elif (route.find(ls) is not None):

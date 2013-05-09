@@ -90,13 +90,13 @@ for byway in byways:
     rootCoords = []    
     if (byway.find("Route") is not None):
     	route = byway.find("Route")
-		if (route.find(mls) is not None):
-			startIndex = 0
-			for lineStringMember in route.find(mls).findall(lsm):
-				tRootCoords = findLineString(drive.driveid, lineStringMember, len(rootCoords))
-				rootCoords = rootCoords + tRootCoords
-		elif (route.find(ls) is not None):
-			routeCoords = findLineString(drive.driveid, route, 0)
+	if (route.find(mls) is not None):
+		startIndex = 0
+		for lineStringMember in route.find(mls).findall(lsm):
+			tRootCoords = findLineString(drive.driveid, lineStringMember, len(rootCoords))
+			rootCoords = rootCoords + tRootCoords
+	elif (route.find(ls) is not None):
+		routeCoords = findLineString(drive.driveid, route, 0)
 
 	#for point in rootCoords:
 	#	print(point.toString())

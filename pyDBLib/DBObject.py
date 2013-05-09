@@ -16,6 +16,22 @@ class DBObject(object):
  	def toString(self):
  		raise NotImplementedError, "Please override in derived class" 		
 
+	def insertIntoDB(self, theSQLiteDatabaseName):
+		con = None
+		try:
+			con = sqlite3.connect(theSQLiteDatabaseName)
+			cur = con.cursor()
+			cur.execute("INSERT INTO " + self.getTableName() + " VALUES(" + self.getValues() + ")"
+			con.commit()
+			print("INSERT INTO " + self.getTableName() + " VALUES(" + self.getValues() + ")")
+	    except sqlite3.Error, e:
+	        if con:
+	            con.rollback()
+	            print "Error %s:" % e.args[0]
+	            sys.exit(1)
+	    finally:
+	        if con:
+			con.close()
 	def createSQLiteTable(self,theSQLiteDatabaseName,theDeleteIfExists):
 	    con = None
 	    try:

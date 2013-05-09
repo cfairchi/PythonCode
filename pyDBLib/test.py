@@ -4,6 +4,7 @@
 import sqlite3 as lite
 import sys
 import DBObject
+import urllib2
 from DBDrive import DBDrive
 from DBCoordinate import DBCoordinate
 

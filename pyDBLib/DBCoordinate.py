@@ -4,7 +4,7 @@ from DBObject import DBObject
 class DBCoordinate(DBObject):
     driveid = ""
     order = ""
-    latitude = ""
+    latitude = "unknown"
     longitude = ""
 
     def getColumns(self):
@@ -16,7 +16,7 @@ class DBCoordinate(DBObject):
         return cols
 
     def toString(self):
-        print (self.driveid + "," + self.order + "," + self.latitude + "," + self.longitude)
+        print (self.driveid + "," + str(self.order) + "," + self.latitude + "," + self.longitude)
 
     def getTableName(self):
         return "coordinates"

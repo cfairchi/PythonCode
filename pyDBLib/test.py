@@ -18,12 +18,13 @@ def parseCoordinates(theDriveId, theStartIndex, theCoords):
 	coords = []
 	index = theStartIndex
 	splitCoords = theCoords.split(" ")
-	for i in range(0,len(splitCoords),2):
+	for i in range(0,len(splitCoords)-1):
+		splitStr = splitCoords[i].split(",")
 		point = DBCoordinate()
 		point.driveid = theDriveId
 		point.order = index 
-		point longitude = splitCoords[i]
-		point.latitide = splitCoords[i+1]
+		point.longitude = splitStr[0]
+		point.latitude = splitStr[1]
 		index = index + 1
 		coords.append(point)
 	
@@ -33,7 +34,6 @@ def parseCoordinates(theDriveId, theStartIndex, theCoords):
 def findLineString(theDriveId, route, theStartIndex):
 	routeCoords = []
 	if (route.find(ls) is not None):
-		print("Found LineString")
     		if (route.find(ls).find(cs) is not None):
 			routeCoords = parseCoordinates(theDriveId, theStartIndex, route.find(ls).find(cs).text)
 	return routeCoords
@@ -48,7 +48,7 @@ coord.createSQLiteTable("BywayExplorer.db",True)
 tree = ET.parse("byways.xml")
 elem = tree.getroot()
 byways = elem.findall("Byway")
-
+breakIndex = 0
 for byway in byways:
     drive = DBDrive()
     if (byway.find("id") is not None and byway.find("id").text is not None):
@@ -87,12 +87,11 @@ for byway in byways:
     drive.seasons = ""
     drive.considerations = ""
     drive.directions = ""
-    
+    rootCoords = []    
     if (byway.find("Route") is not None):
     	route = byway.find("Route")
 	if (route.find(mls) is not None):
 		startIndex = 0
-		rootCoords = []
 		for lineStringMember in route.find(mls).findall(lsm):
 			tRootCoords = findLineString(drive.driveid, lineStringMember, len(rootCoords))
 			rootCoords = rootCoords + tRootCoords
@@ -100,7 +99,10 @@ for byway in byways:
 			
 	elif (route.find(ls) is not None):
 		routeCoords = findLineString(drive.driveid, route, 0)
-		print(rootCoords)
-		
-    	    	
+
+	for point in rootCoords:
+		print(point.toString())
+	breakIndex = breakIndex + 1
+	if (breakIndex > 5):
+		break	 	    	
     #drive.toString()

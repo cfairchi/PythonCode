@@ -25,8 +25,19 @@ class DBObject(object):
 		try:
 			con = sqlite3.connect(theSQLiteDatabaseName)
 			cur = con.cursor()
-			print("INSERT INTO " + self.getTableName() + " VALUES(" + self.getValues() + ")")
-			cur.execute("INSERT INTO " + self.getTableName() + " VALUES(" + self.getValues() + ")"
+			values = self.getValues()
+			colNames = self.getColumns()
+			valString = " VALUES("
+			colIndex = 0
+	        	for col in colNames:
+	        		if (colIndex > 0):
+	        			valString = valString + ","
+	        		if (col[1] == "TEXT"):
+	        			valString = valString + "'" + values[col[0]] + "'"
+	        	valString = valString + ")"
+	        	
+			print("INSERT INTO " + self.getTableName() + valString)
+			cur.execute("INSERT INTO " + self.getTableName() + valString)
 			con.commit()
 			
 	    except sqlite3.Error, e:

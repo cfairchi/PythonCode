@@ -36,6 +36,7 @@ class DBObject(object):
 	    finally:
 	        if con:
 			con.close()
+	
 	def createSQLiteTable(self,theSQLiteDatabaseName,theDeleteIfExists):
 	    con = None
 	    try:
@@ -48,9 +49,9 @@ class DBObject(object):
 	        colNames = self.getColumns()
 	        for col in colNames:
 	            if (i !=0 ):
-	                sqlCmd = sqlCmd + "," + col + " TEXT"
+	                sqlCmd = sqlCmd + "," + col[0] + " " + col[1]
 	            else:
-	                sqlCmd = sqlCmd + col + " TEXT"
+	                sqlCmd = sqlCmd + col[0] + " " + col[1]
 	        sqlCmd = sqlCmd + ")"
 	        cur.execute(sqlCmd)
 	        print("Table " + self.getTableName() + " Created")

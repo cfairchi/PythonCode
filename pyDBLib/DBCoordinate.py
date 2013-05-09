@@ -17,6 +17,8 @@ class DBCoordinate(DBObject):
 
     def toString(self):
         print (self.driveid + "," + str(self.order) + "," + self.latitude + "," + self.longitude)
-
+    
+    def getValues(self):
+        return "'" + self.driveid + "','" + str(self.order) " 
     def getTableName(self):
         return "coordinates"

@@ -55,8 +55,8 @@ def findLineString(theDriveId, route, theStartIndex):
 	
 drive = DBDrive()
 drive.createSQLiteTable("BywayExplorer.db",True)
-coord = DBCoordinate()
-coord.createSQLiteTable("BywayExplorer.db",True)
+#coord = DBCoordinate()
+#coord.createSQLiteTable("BywayExplorer.db",True)
 tree = ET.parse("byways.xml")
 elem = tree.getroot()
 byways = elem.findall("Byway")
@@ -82,8 +82,10 @@ for byway in byways:
     	
     if (byway.find("FullDescription") is not None and byway.find("FullDescription").text is not None):
     	fd = byway.find("FullDescription").text
-    	
-    drive.description = clean(sd + fd)
+    
+    drive.shortDescription = clean(sd)
+    drive.longDescription = clean(fd)
+    #drive.description = clean(sd + fd)
     if (byway.find("Length") is not None and byway.find("Length").text is not None):
     	drive.mileage = byway.find("Length").text
     if (byway.find("SuggestedTime") is not None and byway.find("SuggestedTime").text is not None):
@@ -93,11 +95,11 @@ for byway in byways:
     	asset = byway.find("Photo").find("Asset")
     	if (asset.find("URL") is not None and asset.find("URL").text is not None):
 		url = asset.find("URL").text
-    		drive.image = url
-    		if (drive.image != ""):
-    			print("Saving " + url + " into " + drive.driveid + "_image.jpg")
-    			with open("./images/image_" + drive.driveid + ".jpg","wb") as f:
-                        	f.write(urllib2.urlopen(url).read())
+    		drive.image = "image_" + drive.driveid + ".jpg"
+    		#if (drive.image != ""):
+    		#	print("Saving " + url + " into " + drive.driveid + "_image.jpg")
+    			#with open("./images/image_" + drive.driveid + ".jpg","wb") as f:
+                #        	f.write(urllib2.urlopen(url).read())
                         
     	if (asset.find("Credits") is not None and asset.find("Credits").text is not None):
     		drive.imageCredits = asset.find("Credits").text
@@ -106,18 +108,18 @@ for byway in byways:
     drive.seasons = ""
     drive.considerations = ""
     drive.directions = ""
-    rootCoords = []    
-    if (byway.find("Route") is not None):
-    	route = byway.find("Route")
-	if (route.find(mls) is not None):
-		startIndex = 0
-		for lineStringMember in route.find(mls).findall(lsm):
-			tRootCoords = findLineString(drive.driveid, lineStringMember, len(rootCoords))
-			rootCoords = rootCoords + tRootCoords
-	elif (route.find(ls) is not None):
-		routeCoords = findLineString(drive.driveid, route, 0)
+    #rootCoords = []    
+    #if (byway.find("Route") is not None):
+   # 	route = byway.find("Route")
+	#if (route.find(mls) is not None):
+#		startIndex = 0
+#		for lineStringMember in route.find(mls).findall(lsm):
+			#tRootCoords = findLineString(drive.driveid, lineStringMember, len(rootCoords))
+			#rootCoords = rootCoords + tRootCoords
+	#elif (route.find(ls) is not None):
+	#	routeCoords = findLineString(drive.driveid, route, 0)
 
-	breakIndex = breakIndex + 1
+#	breakIndex = breakIndex + 1
 #	if (breakIndex > 5):
 #		break	 	 
 	

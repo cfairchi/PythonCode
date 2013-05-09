@@ -1,0 +1,1 @@
+from csf_ import generateVideoFromCoords

@@ -51,12 +51,15 @@ for byway in byways:
     drive.seasons = ""
     drive.considerations = ""
     drive.directions = ""
+    ls = "{http://www.opengis.net/gml}LineString"
+    cs = "{http://www.opengis.net/gml}coordinates"
     if (byway.find("Route") is not None):
 	print("Found Route")
-    	if (byway.find("Route").find("{http://www.opengis.net/gml}LineString") is not None):
+    	if (byway.find("Route").find(ls) is not None):
 		print("Found LineString")
-    		if (byway.find("Route").find("LineString").find("coordinates") is not None):
+    		if (byway.find("Route").find(ls).find(cs) is not None):
 			print("Found Coordinates")
-			drive.coordinates = byway.find("Route").find("LineString").find("coordinates").text
+			drive.coordinates = byway.find("Route").find(ls).find(cs).text
+			print(drive.coordinates)
     	    	
     #drive.toString()

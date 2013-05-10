@@ -19,10 +19,9 @@ try:
 	cur = con.cursor(mdb.cursors.DictCursor)
 	cur.execute("SELECT * from FROM bywayexplorer_drive ORDER BY driveid")
 	driveRows = cur.fetchall()
-	i = 0
-	for drive in driveRows:
-		if (drive["driveid"] in driveIds):
-			print("Duplicate: " + drive["id"] + " -- " + drive["driveid"])
-		else:
-			driveIds.append(drive["driveid"])
+	#for drive in driveRows:
+#		if (drive["driveid"] in driveIds):
+#			print("Duplicate: " + drive["id"] + " -- " + drive["driveid"])
+#		else:
+#			driveIds.append(drive["driveid"])
       

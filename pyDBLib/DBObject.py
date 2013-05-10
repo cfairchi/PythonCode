@@ -62,7 +62,8 @@ class DBObject(object):
 					
 			colString += ")"
 			valString += ")"
-			print("INSERT INTO " + theTableName + " " + colString + " VALUES" +  valString)
+			print(values["driveid"])
+			#print("INSERT INTO " + theTableName + " " + colString + " VALUES" +  valString)
 			cur.execute("INSERT INTO " + theTableName + " " + colString + " VALUES" +  valString)
 			con.commit()	
 			

@@ -14,12 +14,12 @@ try:
   drive = DBDrive()
   cur.execute("SELECT * FROM " + drive.getTableName())
   driveRows = cur.fetchall()
-  i = 0
+  print(len(driveRows))
   for driveRow in driveRows:
     driveid = driveRow[0]
     newDrive = DBDrive()
     newDrive.driveid = driveRow[0]
-    newDrive.driveName = driveRow[1]
+    newDrive.driveName = driveRow[1].replace("'","''")
     newDrive.country = driveRow[2]
     newDrive.region = driveRow[3]
     newDrive.startLat = driveRow[4]
@@ -39,9 +39,6 @@ try:
     newDrive.directions = driveRow[17]
     newDrive.imageCredits = driveRow[18]
     newDrive.insertIntoMySQLDB("djangosite","bywayexplorer_drive")
-    i += 1
-    #if (i > 5):
-     # break;
 except sqlite3.Error, e:
   print "Error %d: %s" % (e.args[0],e.args[1])
   sys.exit(1)

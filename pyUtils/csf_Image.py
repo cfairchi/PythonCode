@@ -1,3 +1,5 @@
+import Image
+
 def resize(img, box, fit, out):
    '''Downsample the image.
    @param img: Image -  an Image-object

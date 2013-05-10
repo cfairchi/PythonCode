@@ -24,6 +24,8 @@ try:
     coordString = coord["driveid"]+coord["latitude"]+coord["longitude"]
     if (coordString in coords):
       print("Duplicate: " + coord[id] + "," + coord["driveid"] + "," + coord["latitude"] + "," + coord["longitude"])
+    else:
+      coords.append(coordString)
     i += 1
     if (i > 5):
       break

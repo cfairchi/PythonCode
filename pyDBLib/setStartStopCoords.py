@@ -34,10 +34,11 @@ try:
     drv.stopLat = coordinates[last][2]
     drv.stopLon = coordinates[last][3]
     cur3 = con.cursor()
+    print("UPDATE bywayexplorer_drive SET startLat=" + drv.startLat + ", startLon=" + drv.startLon + ", stopLat=" + drv.stopLat + ", stopLon=" + drv.stopLon + " WHERE driveid='" + drv.driveid + "'")
     cur3.execute("UPDATE bywayexplorer_drive SET startLat=" + drv.startLat + ", startLon=" + drv.startLon + ", stopLat=" + drv.stopLat + ", stopLon=" + drv.stopLon + " WHERE driveid='" + drv.driveid + "'"  )
     cur3.commit
     
-except sqlite3.Error, e:
+except MySQLdb.Error, e:
   print "Error %d: %s" % (e.args[0],e.args[1])
   sys.exit(1)
 finally:

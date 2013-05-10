@@ -21,7 +21,7 @@ try:
   i = 0
   dCount = 0
   for drive in drives:
-    print("Drive: " + drive["driveid"] + " Item: " + str(dCount) + " of " + str(len(drives)))
+    #print("Drive: " + drive["driveid"] + " Item: " + str(dCount) + " of " + str(len(drives)))
     dCount+=1;
     coords = []
     cur = con.cursor(MySQLdb.cursors.DictCursor)
@@ -34,8 +34,8 @@ try:
       if (coordString in coords):
         i+=1
         cur = con.cursor()
-        sql = "DELETE FROM bywayexplorer_coordinate WHERE id = '" + str(coord["id"]) + "'"
-        print(str(i) + " - " + sql)
+        sql = "DELETE FROM bywayexplorer_coordinate WHERE id = '" + str(coord["id"]) + "';"
+        print(sql)
         cur.execute(sql)
         con.commit
         

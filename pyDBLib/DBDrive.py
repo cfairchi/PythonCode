@@ -22,7 +22,6 @@ class DBDrive(DBObject):
 	considerations = ""
 	directions = ""
 	imageCredits = ""
-    	coordinates = ""
     
 	def getValues(self):
     		values = {}
@@ -46,7 +45,6 @@ class DBDrive(DBObject):
 		values["considerations"] = self.considerations
 		values["directions"] = self.directions
 		values["imageCredits"] = self.imageCredits
-	    	values["coordinates"] = self.coordinates
     		return values
 		
 	def getColumns(self):
@@ -71,11 +69,10 @@ class DBDrive(DBObject):
 		cols.append(["considerations","TEXT"])
 		cols.append(["directions","TEXT"])
 		cols.append(["imageCredits","TEXT"])
-		cols.append(["coordinates","TEXT"])
 		return cols
 
 	def toString(self):
-		print (self.driveid + "," + self.driveName + "," + self.country + "," + self.region + "," + self.startLat + "," + self.startLon + "," + self.stopLat + "," + self.stopLon + "," + self.shortDescription  + "," + self.longDescription + "," + self.mileage + "," + self.timeToAllow + "," + self.favorite + "," + self.image + "," + self.mapimage + "," + self.restrictions + "," + self.seasons + "," + self.considerations + "," + self.directions + "," + self.imageCredits + "," + self.coordinates)
+		print (self.driveid + "," + self.driveName + "," + self.country + "," + self.region + "," + self.startLat + "," + self.startLon + "," + self.stopLat + "," + self.stopLon + "," + self.shortDescription  + "," + self.longDescription + "," + self.mileage + "," + self.timeToAllow + "," + self.favorite + "," + self.image + "," + self.mapimage + "," + self.restrictions + "," + self.seasons + "," + self.considerations + "," + self.directions + "," + self.imageCredits)
 		
 	def getTableName(self):
 		return "drives"

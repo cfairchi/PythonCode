@@ -13,7 +13,7 @@ def getMySqlConnection(theDBName):
   return MySQLdb.Connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost')
 
 con = getMySqlConnection("djangosite")
-
+con2 = getMySqlConnection("djangosite")
 try:
   cur0 = con.cursor(MySQLdb.cursors.DictCursor)
   cur0.execute("SELECT driveid FROM bywayexplorer_drive")
@@ -30,10 +30,9 @@ try:
       coordString = coord["driveid"]+str(coord["latitude"])+str(coord["longitude"])
       if (coordString in coords):
         i+=1
-        cur1 = con.cursor()
-	print("DELETE FROM bywayexplorer_coordinate WHERE id = " + str(coord["id"]))
+        cur1 = con2.cursor()
         cur1.execute("DELETE FROM bywayexplorer_coordinate WHERE id = " + str(coord["id"]))
-        con.commit
+        con2.commit
         print("Duplicate:(" + str(i) + ") " + str(coord["id"]) + "," + coord["driveid"] + "," + str(coord["latitude"]) + "," + str(coord["longitude"]))
       else:
         coords.append(coordString)

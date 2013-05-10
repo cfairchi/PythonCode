@@ -17,22 +17,22 @@ con = getMySqlConnection("djangosite")
 
 try:
   totalRequests = 0
-  cur = con.cursor()
+  cur = con.cursor(MySQLdb.cursors.DictCursor)
   coord = DBCoordinate()
   cur.execute("SELECT driveid FROM bywayexplorer_drive")
   driveRows = cur.fetchall()
   for drive in driveRows:
-    driveid = drive[0]
-    cur2 = con.cursor()
+    driveid = drive["driveid"]
+    cur2 = con.cursor(MySQLdb.cursors.DictCursor)
     cur2.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid = '" + driveid + "' ORDER BY routeOrder")
     coordinates = cur2.fetchall()
     drv = DBDrive()
-    drv.driveid = coordinates[0][0]
-    drv.startLat = coordinates[0][2]
-    drv.startLon = coordinates[0][3]
+    drv.driveid = coordinates[0]["driveid"]
+    drv.startLat = coordinates[0]["latitude"]
+    drv.startLon = coordinates[0]["longitude"]
     last = len(coordinates) - 1 
-    drv.stopLat = coordinates[last][2]
-    drv.stopLon = coordinates[last][3]
+    drv.stopLat = coordinates[last]["latitude"]
+    drv.stopLon = coordinates[last]["longitude"]
     cur3 = con.cursor()
     print("UPDATE bywayexplorer_drive SET startLat=" + drv.startLat + ", startLon=" + drv.startLon + ", stopLat=" + drv.stopLat + ", stopLon=" + drv.stopLon + " WHERE driveid='" + drv.driveid + "'")
     cur3.execute("UPDATE bywayexplorer_drive SET startLat=" + drv.startLat + ", startLon=" + drv.startLon + ", stopLat=" + drv.stopLat + ", stopLon=" + drv.stopLon + " WHERE driveid='" + drv.driveid + "'"  )

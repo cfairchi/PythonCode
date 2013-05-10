@@ -63,7 +63,7 @@ class DBObject(object):
 			#cur.execute("INSERT INTO " + self.getTableName + "(" col[0] +") VALUES('" values[col[0]] + "')")
 				
 			
-		except _mysql.Error, e:
+		except MySQLdb.Error, e:
 			print "Error %d: %s" % (e.args[0], e.args[1])
     			sys.exit(1)
 		finally:

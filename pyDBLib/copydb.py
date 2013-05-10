@@ -40,8 +40,8 @@ try:
     newDrive.imageCredits = driveRow[18]
     newDrive.insertIntoMySQLDB("djangosite","bywayexplorer_drive")
     i += 1
-    if (i > 5):
-      break;
+    #if (i > 5):
+     # break;
 except sqlite3.Error, e:
   print "Error %d: %s" % (e.args[0],e.args[1])
   sys.exit(1)

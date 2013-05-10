@@ -64,7 +64,7 @@ class DBObject(object):
 			valString += ")"
 			print("INSERT INTO " + theTableName + " " + colString + " VALUES" +  valString)
 			cur.execute("INSERT INTO " + theTableName + " " + colString + " VALUES" +  valString)
-				
+			con.commit()	
 			
 		except MySQLdb.Error, e:
 			print "Error %d: %s" % (e.args[0], e.args[1])

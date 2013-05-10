@@ -1,6 +1,15 @@
 import abc
 import sqlite3
+import _mysql
 import sys
+import os
+
+lib_path = os.path.abspath('../')
+sys.path.append(lib_path)
+
+from chrispwd.py import getUserName
+from chrispwd.py import getPassword
+
 
 class DBObject(object):
 	__metaclass__ = abc.ABCMeta
@@ -21,6 +30,45 @@ class DBObject(object):
  	def getValues(self):
  		raise NotImplementedError, "Please override in derived class" 		
 
+	def getMySqlConnection(self, theDBName):
+		return _mysql.connect('localhost',getUserName(),getPassword(),theDBName)
+		
+	
+	def insertIntoMySQLDB(self, theDBName):
+		con = none
+		try:
+			con = getMySqlConnection(theDBName)
+			cur = con.cursor
+			values = self.getValues()
+			colNames = self.getColumns()
+			colString = "("
+			valString = "("
+			
+			i = 0
+			for col in colNames:
+				if (i > 0):
+					colString += "," + col[0]
+					valString += "," + values[col[0]]
+				colString += col[0]
+				if (col[1] == "INT"):
+					valString += values[col[0]]
+				else:
+					valString += "'" + values[col[0]] + "'"
+					
+			colString += ")"
+			calString +" ")"
+			print("INSERT INTO " + self.getTableName + " " + colString + " " +  valString)
+			#cur.execute("INSERT INTO " + self.getTableName + "(" col[0] +") VALUES('" values[col[0]] + "')")
+				
+			
+		except _mysql.Error, e:
+			print "Error %d: %s" % (e.args[0], e.args[1])
+    		sys.exit(1)
+		finally:
+			if con:
+        		con.close()
+			
+			
 	def insertIntoSQLiteDB(self, theSQLiteDatabaseName):
 		con = None
 		try:

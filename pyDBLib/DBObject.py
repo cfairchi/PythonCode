@@ -1,6 +1,6 @@
 import abc
 import sqlite3
-import _mysql
+import MySQLdb
 import sys
 import os
 
@@ -31,14 +31,15 @@ class DBObject(object):
  		raise NotImplementedError, "Please override in derived class" 		
 
 	def getMySqlConnection(self, theDBName):
+		my_conv = { FIELD_TYPE.LONG: int }
 		#return _mysql.connect('localhost',getUserName(),getPassword(),theDBName)
-		return _mysql.connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost')
+		return MySQLdb.connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost',my_conv)
 		
 	
 	def insertIntoMySQLDB(self, theDBName, theTableName):
 		con = None
 		try:
-			con = self.getMySqlConnection
+			con = self.getMySqlConnection(theDBName)
 			cur = con.cursor()
 			values = self.getValues()
 			colNames = self.getColumns()

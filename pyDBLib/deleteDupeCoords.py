@@ -15,13 +15,15 @@ def getMySqlConnection(self, theDBName):
 con = getMySqlConnection("djangosite")
 
 try:
-  driveIds = []
-  cur = con.cursor()
-  cur.execute("SELECT * from FROM bywayexplorer_drive ORDER BY driveid")
-  driveRows = cur.fetchall()
+  coords = []
+  cur = con.cursor(mdb.cursors.DictCursor)
+  cur.execute("SELECT * from FROM bywayexplorer_coordinate ORDER BY driveid")
+  coordinates = cur.fetchall()
   i = 0
-  for drive in driveRows:
-    print(drive[0] + "," + drive[1] + "," + drive[2])
+  for coord in coordinates:
+    coordString = coord["driveid"]+coord["latitude"]+coord["longitude"]
+    if (coordString in coords):
+      print("Duplicate: " + coord[id] + "," + coord["driveid"] + "," + coord["latitude"] + "," + coord["longitude"])
     i += 1
     if (i > 5):
       break

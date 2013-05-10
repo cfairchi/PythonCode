@@ -55,7 +55,7 @@ class DBObject(object):
 				colString += col[0]
 					
 				if (col[1] == "INT"):
-					valString += values[col[0]]
+					valString += str(values[col[0]])
 				else:
 					valString += "'" + values[col[0]] + "'"
 				i += 1

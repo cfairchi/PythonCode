@@ -44,7 +44,7 @@ try:
     drv.stopLon = coordinates[last]["longitude"]
     con3 = getMySqlConnection("djangosite")
     cur3 = con3.cursor()
-    print("UPDATE bywayexplorer_drive SET startLat=" + str(drv.startLat) + ", startLon=" + str(drv.startLon) + ", stopLat=" + str(drv.stopLat) + ", stopLon=" + str(drv.stopLon) + " WHERE driveid='" + str(drv.driveid) + "'")
+    print("UPDATE bywayexplorer_drive SET startLat=" + str(drv.startLat) + ", startLon=" + str(drv.startLon) + ", stopLat=" + str(drv.stopLat) + ", stopLon=" + str(drv.stopLon) + " WHERE driveid='" + str(drv.driveid) + "';")
     cur3.execute("UPDATE bywayexplorer_drive SET startLat=" + str(drv.startLat) + ", startLon=" + str(drv.startLon) + ", stopLat=" + str(drv.stopLat) + ", stopLon=" + str(drv.stopLon) + " WHERE driveid='" + str(drv.driveid) + "'"  )
     con3.commit
     cur3.close()
@@ -54,6 +54,3 @@ try:
 except MySQLdb.Error, e:
   print "Error %d: %s" % (e.args[0],e.args[1])
   sys.exit(1)
-finally:
-  if con:
-    con.close() 

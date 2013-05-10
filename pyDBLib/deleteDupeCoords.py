@@ -13,10 +13,10 @@ def getMySqlConnection(theDBName):
   return MySQLdb.Connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost')
 
 con = getMySqlConnection("djangosite")
-con2 = getMySqlConnection("djangosite")
+
 try:
-  cur0 = con.cursor(MySQLdb.cursors.DictCursor)
-  cur0.execute("SELECT driveid FROM bywayexplorer_drive")
+  cur = con.cursor(MySQLdb.cursors.DictCursor)
+  cur.execute("SELECT driveid FROM bywayexplorer_drive")
   drives = cur0.fetchall()
   i = 0
   dCount = 0
@@ -24,7 +24,6 @@ try:
     print("Drive: " + drive["driveid"] + " Item: " + str(dCount) + " of " + str(len(drives)))
     dCount+=1;
     coords = []
-    cur = con.cursor(MySQLdb.cursors.DictCursor)
     cur.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid ='" + drive["driveid"] + "' ORDER BY routeOrder")
     coordinates = cur.fetchall()
     
@@ -32,10 +31,12 @@ try:
       coordString = coord["driveid"]+str(coord["latitude"])+str(coord["longitude"])
       if (coordString in coords):
         i+=1
-        cur1 = con2.cursor()
-        cur1.execute("DELETE FROM bywayexplorer_coordinate WHERE id = '" + str(coord["id"]) + "'")
-        con2.commit
-        print("Duplicate:(" + str(i) + ") " + str(coord["id"]) + "," + coord["driveid"] + "," + str(coord["latitude"]) + "," + str(coord["longitude"]))
+        cur = con.cursor()
+        sql = "DELETE FROM bywayexplorer_coordinate WHERE id = '" + str(coord["id"]) + "'"
+        print(str(i) + " - " + sql)
+        cur.execute(sql)
+        con.commit
+        #print("Duplicate:(" + str(i) + ") " + str(coord["id"]) + "," + coord["driveid"] + "," + str(coord["latitude"]) + "," + str(coord["longitude"]))
       else:
         coords.append(coordString)
 except MySQLdb.Error, e:

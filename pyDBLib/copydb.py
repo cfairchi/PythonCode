@@ -20,6 +20,26 @@ try:
     newDrive = DBDrive()
     newDrive.driveid = driveRow[0]
     newDrive.driveName = driveRow[1]
+    newDrive.country = driveRow[2]
+    newDrive.region = driveRow[3]
+    newDrive.startLat = driveRow[4]
+    newDrive.startLon = driveRow[5]
+    newDrive.stopLat = driveRow[6]
+    newDrive.stopLon = driveRow[7]
+    newDrive.shortDescription = ""
+    newDrive.longDescription = ""
+    newDrive.mileage = driveRow[9]
+    newDrive.timeToAllow = driveRow[10]
+    newDrive.favorite = driveRow[11]
+    newDrive.image = driveRow[12]
+    newDrive.mapimage = driveRow[13]
+    newDrive.restrictions = driveRow[14]
+    newDrive.seasons = driveRow[15]
+    newDrive.considerations = driveRow[16]
+    newDrive.directions = driveRow[17]
+    newDrive.imageCredits = driveRow[18]
+    
+     
     print newDrive.toString()
     i += 1
     if (i > 5):

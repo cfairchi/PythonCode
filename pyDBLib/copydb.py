@@ -27,7 +27,7 @@ try:
     newDrive.stopLat = driveRow[6]
     newDrive.stopLon = driveRow[7]
     newDrive.shortDescription = ""
-    newDrive.longDescription = driveRow[8]
+    newDrive.longDescription = driveRow[8].replace("'","''")
     newDrive.mileage = driveRow[9]
     newDrive.timeToAllow = driveRow[10]
     newDrive.favorite = driveRow[11]

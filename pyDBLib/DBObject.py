@@ -37,7 +37,7 @@ class DBObject(object):
 	def insertIntoMySQLDB(self, theDBName, theTableName):
 		con = None
 		try:
-			con = self.getMySqlConnection(theDBName)
+			con = _mysql.connect('localhost',getUserName(),getPassword(),theDBName)
 			cur = con.cursor()
 			values = self.getValues()
 			colNames = self.getColumns()

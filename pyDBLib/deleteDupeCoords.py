@@ -36,9 +36,9 @@ try:
         print("Duplicate:(" + str(i) + ") " + str(coord["id"]) + "," + coord["driveid"] + "," + str(coord["latitude"]) + "," + str(coord["longitude"]))
       else:
         coords.append(coordString)
-  except MySQLdb.Error, e:
-    print "Error %d: %s" % (e.args[0],e.args[1])
-    sys.exit(1)
-  finally:
-    if con:
-      con.close() 
+except: MySQLdb.Error, e:
+  print "Error %d: %s" % (e.args[0],e.args[1])
+  sys.exit(1)
+finally:
+  if con:
+    con.close() 

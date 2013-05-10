@@ -33,7 +33,7 @@ try:
       if (coordString in coords):
         i+=1
         cur1 = con2.cursor()
-        cur1.execute("DELETE FROM bywayexplorer_coordinate WHERE id = " + str(coord["id"]))
+        cur1.execute("DELETE FROM bywayexplorer_coordinate WHERE id = '" + str(coord["id"]) + "'")
         con2.commit
         print("Duplicate:(" + str(i) + ") " + str(coord["id"]) + "," + coord["driveid"] + "," + str(coord["latitude"]) + "," + str(coord["longitude"]))
       else:

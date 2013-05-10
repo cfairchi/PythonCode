@@ -56,6 +56,7 @@ class DBObject(object):
 					valString += values[col[0]]
 				else:
 					valString += "'" + values[col[0]] + "'"
+				i += 1
 					
 			colString += ")"
 			valString += ")"

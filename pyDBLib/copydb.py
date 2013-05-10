@@ -28,16 +28,16 @@ try:
     newDrive.stopLon = driveRow[7]
     newDrive.shortDescription = ""
     newDrive.longDescription = driveRow[8].replace("'","''")
-    newDrive.mileage = driveRow[9]
-    newDrive.timeToAllow = driveRow[10]
+    newDrive.mileage = driveRow[9].replace("'","''")
+    newDrive.timeToAllow = driveRow[10].replace("'","''")
     newDrive.favorite = driveRow[11]
-    newDrive.image = driveRow[12]
+    newDrive.image = driveRow[12].replace("'","''")
     newDrive.mapimage = driveRow[13]
-    newDrive.restrictions = driveRow[14]
-    newDrive.seasons = driveRow[15]
-    newDrive.considerations = driveRow[16]
-    newDrive.directions = driveRow[17]
-    newDrive.imageCredits = driveRow[18]
+    newDrive.restrictions = driveRow[14].replace("'","''")
+    newDrive.seasons = driveRow[15].replace("'","''")
+    newDrive.considerations = driveRow[16].replace("'","''")
+    newDrive.directions = driveRow[17].replace("'","''")
+    newDrive.imageCredits = driveRow[18].replace("'","''")
     newDrive.insertIntoMySQLDB("djangosite","bywayexplorer_drive")
 except sqlite3.Error, e:
   print "Error %d: %s" % (e.args[0],e.args[1])

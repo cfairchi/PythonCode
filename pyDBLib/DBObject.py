@@ -49,9 +49,11 @@ class DBObject(object):
 			i = 0
 			for col in colNames:
 				if (i > 0):
-					colString += "," + col[0]
-					valString += "," + values[col[0]]
+					colString += ","
+					valString += ","
+
 				colString += col[0]
+					
 				if (col[1] == "INT"):
 					valString += values[col[0]]
 				else:

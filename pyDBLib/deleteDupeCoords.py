@@ -24,6 +24,7 @@ try:
     print("Drive: " + drive["driveid"] + " Item: " + str(dCount) + " of " + str(len(drives)))
     dCount+=1;
     coords = []
+    cur = con.cursor(MySQLdb.cursors.DictCursor)
     cur.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid ='" + drive["driveid"] + "' ORDER BY routeOrder")
     coordinates = cur.fetchall()
     

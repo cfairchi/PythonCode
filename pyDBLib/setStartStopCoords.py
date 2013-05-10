@@ -21,6 +21,7 @@ try:
   coord = DBCoordinate()
   cur.execute("SELECT driveid FROM bywayexplorer_drive")
   driveRows = cur.fetchall()
+  cur.close()
   if con1:
     con1.close()
     
@@ -30,6 +31,7 @@ try:
     cur2 = con2.cursor(MySQLdb.cursors.DictCursor)
     cur2.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid = '" + driveid + "' ORDER BY routeOrder")
     coordinates = cur2.fetchall()
+    cur.close()
     if con2:
       con2.close()
       
@@ -45,6 +47,7 @@ try:
     print("UPDATE bywayexplorer_drive SET startLat=" + str(drv.startLat) + ", startLon=" + str(drv.startLon) + ", stopLat=" + str(drv.stopLat) + ", stopLon=" + str(drv.stopLon) + " WHERE driveid='" + str(drv.driveid) + "'")
     cur3.execute("UPDATE bywayexplorer_drive SET startLat=" + str(drv.startLat) + ", startLon=" + str(drv.startLon) + ", stopLat=" + str(drv.stopLat) + ", stopLon=" + str(drv.stopLon) + " WHERE driveid='" + str(drv.driveid) + "'"  )
     con3.commit
+    cur3.close()
     if con3:
       con3.close()
     

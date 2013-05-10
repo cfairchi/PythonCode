@@ -15,9 +15,9 @@ def getMySqlConnection(theDBName):
 con = getMySqlConnection("djangosite")
 
 try:
-  cur0 = con.crusor(MySQLdb.cursors.DictCursor)
+  cur0 = con.cursor(MySQLdb.cursors.DictCursor)
   cur0.execute("SELECT driveid FROM bywayexplorer_drive")
-  drives = cur.fetchall()
+  drives = cur0.fetchall()
   i = 0
   for drive in drives:
     print("Drive: " + drive["driveid"])
@@ -31,12 +31,13 @@ try:
       if (coordString in coords):
         i+=1
         cur1 = con.cursor()
-        #cur1.execute("DELETE FROM bywayexplorer_coordinate WHERE id = " + str(coord["id"]))
-        #con.commit
+	print("DELETE FROM bywayexplorer_coordinate WHERE id = " + str(coord["id"]))
+        cur1.execute("DELETE FROM bywayexplorer_coordinate WHERE id = " + str(coord["id"]))
+        con.commit
         print("Duplicate:(" + str(i) + ") " + str(coord["id"]) + "," + coord["driveid"] + "," + str(coord["latitude"]) + "," + str(coord["longitude"]))
       else:
         coords.append(coordString)
-except: MySQLdb.Error, e:
+except MySQLdb.Error, e:
   print "Error %d: %s" % (e.args[0],e.args[1])
   sys.exit(1)
 finally:

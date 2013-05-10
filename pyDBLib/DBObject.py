@@ -56,7 +56,7 @@ class DBObject(object):
 					valString += "'" + values[col[0]] + "'"
 					
 			colString += ")"
-			calString +" ")"
+			valString += ")"
 			print("INSERT INTO " + self.getTableName + " " + colString + " " +  valString)
 			#cur.execute("INSERT INTO " + self.getTableName + "(" col[0] +") VALUES('" values[col[0]] + "')")
 				
@@ -66,7 +66,7 @@ class DBObject(object):
     		sys.exit(1)
 		finally:
 			if con:
-        		con.close()
+        			con.close()
 			
 			
 	def insertIntoSQLiteDB(self, theSQLiteDatabaseName):

@@ -14,7 +14,6 @@ try:
   coord = DBCoord()
   cur.execute("SELECT * FROM " + coord.getTableName())
   coordRows = cur.fetchall()
-  print(len(driveRows))
   for coord in coordRows:
     
     newCoord = DBCoordinate()

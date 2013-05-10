@@ -10,7 +10,7 @@ from DBCoordinate import DBCoordinate
 from chrispwd import getUserName
 from chrispwd import getPassword
 
-def getMySqlConnection(self, theDBName):
+def getMySqlConnection(theDBName):
   return MySQLdb.Connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost')
 
 con = getMySqlConnection("djangosite")

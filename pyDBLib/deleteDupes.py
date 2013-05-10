@@ -6,7 +6,6 @@ import os
 import MySQLdb
 
 from DBDrive import DBDrive
-from DBCoordinate import DBCoordinate
 from chrispwd import getUserName
 from chrispwd import getPassword
 
@@ -16,10 +15,15 @@ def getMySqlConnection(self, theDBName):
 con = getMySqlConnection("djangosite")
 
 try:
-  totalRequests = 0
+  driveIds = []
   cur = con.cursor()
-  coord = DBCoordinate()
-  cur.execute("SELECT driveid FROM bywayexplorer_drive")
+  cur.execute("SELECT * from FROM bywayexplorer_drive ORDER BY driveid")
   driveRows = cur.fetchall()
+  i = 0
   for drive in driveRows:
-    driveid = drive[0]
+    print(drive[0] + "," + drive[1] + "," + drive[2])
+    i += 1
+    if (i > 5):
+      break
+    
+    

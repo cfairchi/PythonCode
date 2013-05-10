@@ -27,7 +27,7 @@ try:
     newDrive.stopLat = driveRow[6]
     newDrive.stopLon = driveRow[7]
     newDrive.shortDescription = ""
-    newDrive.longDescription = ""
+    newDrive.longDescription = driveRow[8]
     newDrive.mileage = driveRow[9]
     newDrive.timeToAllow = driveRow[10]
     newDrive.favorite = driveRow[11]
@@ -38,9 +38,7 @@ try:
     newDrive.considerations = driveRow[16]
     newDrive.directions = driveRow[17]
     newDrive.imageCredits = driveRow[18]
-    
-     
-    print newDrive.toString()
+    newDrive.insertIntoMySQLDB("djangosite","bywayexplorer_drive")
     i += 1
     if (i > 5):
       break;

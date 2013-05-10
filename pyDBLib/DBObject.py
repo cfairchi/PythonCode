@@ -7,8 +7,8 @@ import os
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
 
-from chrispwd.py import getUserName
-from chrispwd.py import getPassword
+from chrispwd import getUserName
+from chrispwd import getPassword
 
 
 class DBObject(object):
@@ -34,11 +34,11 @@ class DBObject(object):
 		return _mysql.connect('localhost',getUserName(),getPassword(),theDBName)
 		
 	
-	def insertIntoMySQLDB(self, theDBName):
-		con = none
+	def insertIntoMySQLDB(self, theDBName, theTableName):
+		con = None
 		try:
-			con = getMySqlConnection(theDBName)
-			cur = con.cursor
+			con = self.getMySqlConnection(theDBName)
+			cur = con.cursor()
 			values = self.getValues()
 			colNames = self.getColumns()
 			colString = "("
@@ -57,13 +57,13 @@ class DBObject(object):
 					
 			colString += ")"
 			valString += ")"
-			print("INSERT INTO " + self.getTableName + " " + colString + " " +  valString)
+			print("INSERT INTO " + theTableName + " " + colString + " " +  valString)
 			#cur.execute("INSERT INTO " + self.getTableName + "(" col[0] +") VALUES('" values[col[0]] + "')")
 				
 			
 		except _mysql.Error, e:
 			print "Error %d: %s" % (e.args[0], e.args[1])
-    		sys.exit(1)
+    			sys.exit(1)
 		finally:
 			if con:
         			con.close()

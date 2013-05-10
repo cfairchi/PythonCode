@@ -33,7 +33,7 @@ class DBObject(object):
 	def getMySqlConnection(self, theDBName):
 		
 		#return _mysql.connect('localhost',getUserName(),getPassword(),theDBName)
-		return MySQLdb.connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost')
+		return MySQLdb.Connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost')
 		
 	
 	def insertIntoMySQLDB(self, theDBName, theTableName):

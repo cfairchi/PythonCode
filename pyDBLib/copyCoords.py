@@ -11,7 +11,7 @@ con = sqlite3.connect("BywayExplorer.db")
 try:
   totalRequests = 0
   cur = con.cursor()
-  coord = DBCoord()
+  coord = DBCoordinate()
   cur.execute("SELECT * FROM " + coord.getTableName())
   coordRows = cur.fetchall()
   for coord in coordRows:

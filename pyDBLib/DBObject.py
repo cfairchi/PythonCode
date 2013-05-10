@@ -31,13 +31,14 @@ class DBObject(object):
  		raise NotImplementedError, "Please override in derived class" 		
 
 	def getMySqlConnection(self, theDBName):
-		return _mysql.connect('localhost',getUserName(),getPassword(),theDBName)
+		#return _mysql.connect('localhost',getUserName(),getPassword(),theDBName)
+		return _mysql.connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost')
 		
 	
 	def insertIntoMySQLDB(self, theDBName, theTableName):
 		con = None
 		try:
-			con = _mysql.connect('localhost',getUserName(),getPassword(),theDBName)
+			con = self.getMySqlConnection
 			cur = con.cursor()
 			values = self.getValues()
 			colNames = self.getColumns()

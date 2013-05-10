@@ -17,7 +17,7 @@ con = getMySqlConnection("djangosite")
 try:
   cur = con.cursor(MySQLdb.cursors.DictCursor)
   cur.execute("SELECT driveid FROM bywayexplorer_drive")
-  drives = cur0.fetchall()
+  drives = cur.fetchall()
   i = 0
   dCount = 0
   for drive in drives:

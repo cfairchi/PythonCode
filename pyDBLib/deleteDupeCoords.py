@@ -16,7 +16,7 @@ con = getMySqlConnection("djangosite")
 
 try:
   coords = []
-  cur = con.cursor(mdb.cursors.DictCursor)
+  cur = con.cursor(MySQLdb.cursors.DictCursor)
   cur.execute("SELECT * from FROM bywayexplorer_coordinate ORDER BY driveid")
   coordinates = cur.fetchall()
   i = 0
@@ -29,3 +29,9 @@ try:
     i += 1
     if (i > 5):
       break
+except MySQLdb.Error, e:
+  print "Error %d: %s" % (e.args[0],e.args[1])
+  sys.exit(1)
+finally:
+  if con:
+    con.close() 

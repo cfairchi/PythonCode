@@ -27,7 +27,7 @@ try:
     cur = con.cursor(MySQLdb.cursors.DictCursor)
     cur.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid ='" + drive["driveid"] + "' ORDER BY routeOrder")
     coordinates = cur.fetchall()
-    con.close()
+    
     for coord in coordinates:
       con = getMySqlConnection("djangosite")
       coordString = coord["driveid"]+str(coord["latitude"])+str(coord["longitude"])
@@ -42,7 +42,7 @@ try:
         #print("Duplicate:(" + str(i) + ") " + str(coord["id"]) + "," + coord["driveid"] + "," + str(coord["latitude"]) + "," + str(coord["longitude"]))
       else:
         coords.append(coordString)
-      con.close()
+      
 except MySQLdb.Error, e:
   print "Error %d: %s" % (e.args[0],e.args[1])
   sys.exit(1)

@@ -31,19 +31,20 @@ try:
     coordinates = cur.fetchall()
     cur.close()
 
-    drv = DBDrive()
-    drv.driveid = coordinates[0]["driveid"]
-    drv.startLat = coordinates[0]["latitude"]
-    drv.startLon = coordinates[0]["longitude"]
-    last = len(coordinates) - 1 
-    drv.stopLat = coordinates[last]["latitude"]
-    drv.stopLon = coordinates[last]["longitude"]
-    
-    cur = con.cursor()
-    print("UPDATE bywayexplorer_drive SET startLat=" + str(drv.startLat) + ", startLon=" + str(drv.startLon) + ", stopLat=" + str(drv.stopLat) + ", stopLon=" + str(drv.stopLon) + " WHERE driveid='" + str(drv.driveid) + "';")
-    cur.execute("UPDATE bywayexplorer_drive SET startLat=" + str(drv.startLat) + ", startLon=" + str(drv.startLon) + ", stopLat=" + str(drv.stopLat) + ", stopLon=" + str(drv.stopLon) + " WHERE driveid='" + str(drv.driveid) + "'"  )
-    con.commit
-    cur.close()
+    if (len(coordinates) > 0):
+      drv = DBDrive()
+      drv.driveid = coordinates[0]["driveid"]
+      drv.startLat = coordinates[0]["latitude"]
+      drv.startLon = coordinates[0]["longitude"]
+      last = len(coordinates) - 1 
+      drv.stopLat = coordinates[last]["latitude"]
+      drv.stopLon = coordinates[last]["longitude"]
+      
+      cur = con.cursor()
+      print("UPDATE bywayexplorer_drive SET startLat=" + str(drv.startLat) + ", startLon=" + str(drv.startLon) + ", stopLat=" + str(drv.stopLat) + ", stopLon=" + str(drv.stopLon) + " WHERE driveid='" + str(drv.driveid) + "';")
+      cur.execute("UPDATE bywayexplorer_drive SET startLat=" + str(drv.startLat) + ", startLon=" + str(drv.startLon) + ", stopLat=" + str(drv.stopLat) + ", stopLon=" + str(drv.stopLon) + " WHERE driveid='" + str(drv.driveid) + "'"  )
+      con.commit
+      cur.close()
     
     
 except MySQLdb.Error, e:

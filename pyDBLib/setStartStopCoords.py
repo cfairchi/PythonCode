@@ -28,7 +28,7 @@ try:
     cur = getMySqlConnection("djangosite")
     cur = con.cursor(MySQLdb.cursors.DictCursor)
     cur.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid = '" + driveid + "' ORDER BY routeOrder")
-    coordinates = cur2.fetchall()
+    coordinates = cur.fetchall()
     cur.close()
 
     drv = DBDrive()

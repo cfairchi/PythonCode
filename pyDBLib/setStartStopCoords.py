@@ -13,11 +13,11 @@ from chrispwd import getPassword
 def getMySqlConnection(theDBName):
   return MySQLdb.Connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost')
 
-con1 = getMySqlConnection("djangosite")
+con = getMySqlConnection("djangosite")
 
 try:
   totalRequests = 0
-  cur = con1.cursor(MySQLdb.cursors.DictCursor)
+  cur = con.cursor(MySQLdb.cursors.DictCursor)
   coord = DBCoordinate()
   cur.execute("SELECT driveid FROM bywayexplorer_drive")
   driveRows = cur.fetchall()

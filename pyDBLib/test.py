@@ -95,11 +95,12 @@ for byway in byways:
     	asset = byway.find("Photo").find("Asset")
     	if (asset.find("URL") is not None and asset.find("URL").text is not None):
 		url = asset.find("URL").text
-    		drive.image = "image_" + drive.driveid + ".jpg"
-    		#if (drive.image != ""):
-    		#	print("Saving " + url + " into " + drive.driveid + "_image.jpg")
-    			#with open("./images/image_" + drive.driveid + ".jpg","wb") as f:
-                #        	f.write(urllib2.urlopen(url).read())
+		iName = "image_extra_" + drive.driveid + ".jpg"
+    		drive.image = url
+    		if (drive.image != ""):
+    			print("Saving " + url + " into " + iName)
+    			with open("./images/" + iName,"wb") as f:
+                       		f.write(urllib2.urlopen(url).read())
                         
     	if (asset.find("Credits") is not None and asset.find("Credits").text is not None):
     		drive.imageCredits = asset.find("Credits").text
@@ -122,6 +123,5 @@ for byway in byways:
 #	breakIndex = breakIndex + 1
 #	if (breakIndex > 5):
 #		break	 	 
-	
-	drive.insertIntoSQLiteDB("BywayExplorer.db")
-	print drive.driveid
+    drive.insertIntoSQLiteDB("BywayExplorer.db")
+    print drive.driveid

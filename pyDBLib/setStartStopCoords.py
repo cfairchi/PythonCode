@@ -14,7 +14,8 @@ def getMySqlConnection(theDBName):
   return MySQLdb.Connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost')
 
 con = getMySqlConnection("djangosite")
-conn.autocommit(True);
+con.autocommit(True);
+
 
 try:
   totalRequests = 0

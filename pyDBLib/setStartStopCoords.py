@@ -14,6 +14,7 @@ def getMySqlConnection(theDBName):
   return MySQLdb.Connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost')
 
 con = getMySqlConnection("djangosite")
+conn.autocommit(True);
 
 try:
   totalRequests = 0
@@ -48,7 +49,8 @@ try:
 
       cur = con.cursor()
         
-      cur.execute("UPDATE bywayexplorer_drive SET startLat = %s WHERE driveid = %s", (str(drv.startLat), drv.driveid))        
+      cur.execute("UPDATE bywayexplorer_drive SET startLat = %s WHERE driveid = %s", (str(drv.startLat), drv.driveid))    
+
       print drv.driveid + " Number of rows updated: %d" % cur.rowcount
       cur.execute("UPDATE bywayexplorer_drive SET startLon = %s WHERE driveid = %s", (str(drv.startLon), drv.driveid))        
       print drv.driveid + " Number of rows updated: %d" % cur.rowcount

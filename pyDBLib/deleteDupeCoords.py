@@ -13,6 +13,7 @@ def getMySqlConnection(theDBName):
   return MySQLdb.Connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost')
 
 con = getMySqlConnection("djangosite")
+conn.autocommit(True);
 
 try:
   cur = con.cursor(MySQLdb.cursors.DictCursor)
@@ -37,7 +38,7 @@ try:
         sql = "DELETE FROM bywayexplorer_coordinate WHERE id = '" + str(coord["id"]) + "';"
         print(sql)
         cur.execute(sql)
-        con.commit
+        
         
         #print("Duplicate:(" + str(i) + ") " + str(coord["id"]) + "," + coord["driveid"] + "," + str(coord["latitude"]) + "," + str(coord["longitude"]))
       else:

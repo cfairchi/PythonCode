@@ -31,8 +31,15 @@ try:
 	for driveRow in liteDrives:
 		cur.execute("UPDATE bywayexplorer_drive SET region = %s WHERE driveid = %s", (driveRow[3], driveRow[0]))    
 		print driveRow[0] + " Number of rows updated: %d" % cur.rowcount
-        	cur.execute("UPDATE bywayexplorer_drive SET longDescription = %s WHERE driveid = %s", (longD, driveRow[0]))        
-        	print driveRow[0] + " Number of rows updated: %d" % cur.rowcount 
+		cur.execute("UPDATE bywayexplorer_drive SET restrictions = %s WHERE driveid = %s", (driveRow[15], driveRow[0]))    
+		print driveRow[0] + " Number of rows updated: %d" % cur.rowcount
+    	cur.execute("UPDATE bywayexplorer_drive SET seasons = %s WHERE driveid = %s", (driveRow[16], driveRow[0]))        
+    	print driveRow[0] + " Number of rows updated: %d" % cur.rowcount 
+		cur.execute("UPDATE bywayexplorer_drive SET considerations = %s WHERE driveid = %s", (driveRow[17], driveRow[0]))        
+    	print driveRow[0] + " Number of rows updated: %d" % cur.rowcount 
+    	cur.execute("UPDATE bywayexplorer_drive SET directions = %s WHERE driveid = %s", (driveRow[18], driveRow[0]))        
+    	print driveRow[0] + " Number of rows updated: %d" % cur.rowcount 
+
 
 except MySQLdb.Error, e:
   print "Error %d: %s" % (e.args[0],e.args[1])

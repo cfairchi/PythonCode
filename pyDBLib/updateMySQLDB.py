@@ -23,22 +23,24 @@ con.autocommit(True);
 
 try:
 	cur = con.cursor()
+	
 	liteCon = lite.connect('bywayexplorer_current.db')
+	liteCon.row_factory = lite.Row
 	liteCur = liteCon.cursor()
 	liteCur.execute("SELECT * FROM drives")
 	liteDrives = liteCur.fetchall()
 
 	for driveRow in liteDrives:
-		cur.execute("UPDATE bywayexplorer_drive SET region = %s WHERE driveid = %s", (driveRow[3], driveRow[0]))    
-		print driveRow[0] + " Number of rows updated: %d" % cur.rowcount
-		cur.execute("UPDATE bywayexplorer_drive SET restrictions = %s WHERE driveid = %s", (driveRow[15], driveRow[0]))    
-		print driveRow[0] + " Number of rows updated: %d" % cur.rowcount
-    	cur.execute("UPDATE bywayexplorer_drive SET seasons = %s WHERE driveid = %s", (driveRow[16], driveRow[0]))        
-    	print driveRow[0] + " Number of rows updated: %d" % cur.rowcount 
-		cur.execute("UPDATE bywayexplorer_drive SET considerations = %s WHERE driveid = %s", (driveRow[17], driveRow[0]))        
-    	print driveRow[0] + " Number of rows updated: %d" % cur.rowcount 
-    	cur.execute("UPDATE bywayexplorer_drive SET directions = %s WHERE driveid = %s", (driveRow[18], driveRow[0]))        
-    	print driveRow[0] + " Number of rows updated: %d" % cur.rowcount 
+		cur.execute("UPDATE bywayexplorer_drive SET region = %s WHERE driveid = %s", (driveRow["region"], driveRow["id"]))    
+		print driveRow["id"] + " Number of rows updated: %d" % cur.rowcount
+		cur.execute("UPDATE bywayexplorer_drive SET restrictions = %s WHERE driveid = %s", (driveRow["restrictions"], driveRow["id"]))    
+		print driveRow["id"] + " Number of rows updated: %d" % cur.rowcount
+	    	cur.execute("UPDATE bywayexplorer_drive SET seasons = %s WHERE driveid = %s", (driveRow["seasons"], driveRow["id"]))        
+    		print driveRow["id"] + " Number of rows updated: %d" % cur.rowcount 
+		cur.execute("UPDATE bywayexplorer_drive SET considerations = %s WHERE driveid = %s", (driveRow["considerations"], driveRow["id"]))        
+	    	print driveRow["id"] + " Number of rows updated: %d" % cur.rowcount 
+    		cur.execute("UPDATE bywayexplorer_drive SET directions = %s WHERE driveid = %s", (driveRow["directions"], driveRow["id"]))        
+    		print driveRow["id"] + " Number of rows updated: %d" % cur.rowcount 
 
 
 except MySQLdb.Error, e:

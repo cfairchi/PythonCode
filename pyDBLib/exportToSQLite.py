@@ -34,6 +34,7 @@ try:
   for driveRow in driveRows:
     drive = DBDrive()
     drive.setValues(driveRow)
+    drive.insertIntoSQLiteDB("BywayExplorer.db")
     
   
 except MySQLdb.Error, e:

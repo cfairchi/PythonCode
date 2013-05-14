@@ -34,8 +34,7 @@ try:
   for driveRow in driveRows:
     drive = DBDrive()
     drive.setValues(driveRow)
-    print drive.driveid
-    print drive.driveName
+    
   
 except MySQLdb.Error, e:
   print "Error %d: %s" % (e.args[0],e.args[1])

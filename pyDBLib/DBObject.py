@@ -40,7 +40,7 @@ class DBObject(object):
 		try:
 			con = self.getMySqlConnection(theDBName)
 			cur = con.cursor()
-			values = m_Values
+			values = getValues
 			colNames = self.getColumns()
 			colString = "("
 			valString = "("
@@ -79,7 +79,8 @@ class DBObject(object):
 		try:
 			con = sqlite3.connect(theSQLiteDatabaseName)
 			cur = con.cursor()
-			values = m_Values
+			
+			values = getValues()
 			colNames = self.getColumns()
 			valString = " VALUES("
 			colIndex = 0

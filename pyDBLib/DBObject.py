@@ -32,9 +32,8 @@ class DBObject(object):
  	def toString(self):
  		raise NotImplementedError, "Please override in derived class"
  		
- 	@abc.abstractmethod
  	def getValues(self):
- 		raise NotImplementedError, "Please override in derived class" 		
+ 		return m_Values 		
 
 	def getMySqlConnection(self, theDBName):
 		

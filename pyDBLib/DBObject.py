@@ -136,8 +136,4 @@ class DBObject(object):
 	        if con:
 			con.close()
 	
-	def printValString(self):
-		valString = ""
-		for val in self.getValues():
-			valString = valString + val + ","
-		print valString
+

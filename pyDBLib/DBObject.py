@@ -142,3 +142,9 @@ class DBObject(object):
 	    finally:
 	        if con:
 			con.close()
+	
+	def printValString(self):
+		valString = ""
+		for col in getColumns():
+			valString = valString + DBObject.m_Values[col] + ","
+		print valString

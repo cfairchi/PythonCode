@@ -7,8 +7,7 @@ import MySQLdb
 import sys
 import DBObject
 import urllib2
-import pykml
-from pykml.factory import KML_ElementMaker as KML
+import simplekml
 
 from DBDrive import DBDrive
 from DBCoordinate import DBCoordinate
@@ -34,9 +33,9 @@ try:
     driveid = driveRow["driveid"]
     outFile = "kml_" + driveid + ".kml"
     #kmlFile = pykml.kml(outFile)
-    ls = KML.LineString()
-    coords = KML.coordinates()
-    ls.AltitudeMode = mode.clampToGround
+    
+    coords = []
+    
 
     if (not os.path.exists(outFile)):
       print ("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' ORDER BY routeOrder")
@@ -46,18 +45,17 @@ try:
       for coord in coords:
         lat = coord["latitude"]
         lon = coord["longitude"]
-        ls.Coordinates.append(lat,lon,0)
-        coordList.append(str(lat) + "," + str(lon) + ",0")
-        totalRequests = totalRequests + 1
-      
-      pm = pykml.Placemark()
-      pm.setGeometry(ls)
-      pm.description = drive["shortDescription"]
-      pm.addTofolder(driveid)
-      kmlFile.placemarks.append(pm)
+        ll = (lon,lat,0)
+        coords.append(ll)
+    
+      kml = simplekml.Kml()
+      ls = kml.newlinestring(name=driveRow["driveName"])
+      ls.coords = coords
+      ls.extrude = 0
+      ls.altitudemode = simplekml.AltitudeMode.clampToGround
+      kml.save(outFile)
           
       print( "Generating KML "  )
-      kmlFile.write()
       print( "Done Generating: " + outFile + " Total Requests:" + str(totalRequests))
     else:
       print( "File Already Exists: " + outFile)

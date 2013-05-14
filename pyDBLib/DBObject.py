@@ -13,12 +13,6 @@ from chrispwd import getPassword
 
 class DBObject(object):
 	__metaclass__ = abc.ABCMeta
-	m_Values = {}
-
-	def setValues(self,objectDBRow):
-		for col in self.getColumns():
-			m_Values[col] = objectDBRow[col]
-				
 	
   	@abc.abstractmethod
  	def getColumns(self):
@@ -31,16 +25,11 @@ class DBObject(object):
  	@abc.abstractmethod
  	def toString(self):
  		raise NotImplementedError, "Please override in derived class"
- 		
+ 	
+ 	@abc.abstractmethod 		
  	def getValues(self):
- 		return self.m_Values 
+ 		raise NotImplementedError, "Please override in derived class" 
  		
- 	def setValue(self, theColName, theValue):
- 		self.m_Values[theColName] = theValue
- 		
- 	def getValue(self, theColName):
- 		return self.m_Values[theColName]
-
 	def getMySqlConnection(self, theDBName):
 		
 		#return _mysql.connect('localhost',getUserName(),getPassword(),theDBName)
@@ -149,6 +138,6 @@ class DBObject(object):
 	
 	def printValString(self):
 		valString = ""
-		for col in self.getColumns():
-			valString = valString + DBObject.m_Values[col] + ","
+		for val in self.getValues():
+			valString = valString + val + ","
 		print valString

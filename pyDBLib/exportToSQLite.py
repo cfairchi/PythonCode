@@ -34,7 +34,7 @@ try:
   for driveRow in driveRows:
     drive = DBDrive()
     drive.setValues(driveRow)
-    drive.printValString()
+    drive.toString()
   
 except MySQLdb.Error, e:
   print "Error %d: %s" % (e.args[0],e.args[1])

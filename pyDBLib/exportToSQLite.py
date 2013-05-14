@@ -29,7 +29,7 @@ try:
   liteCon = lite.connect('BywayExplorer.db')
   liteCur = liteCon.cursor()
   tempDrive = DBDrive()
-  tempDrive.createSQLiteTable("BywayExplorer.db",true)
+  tempDrive.createSQLiteTable("BywayExplorer.db",True)
   
   for driveRow in driveRows:
     drive = DBDrive()

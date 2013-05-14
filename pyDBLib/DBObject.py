@@ -15,9 +15,9 @@ class DBObject(object):
 	__metaclass__ = abc.ABCMeta
 	m_Values = {}
 
-	def setValues(objectDBRow):
-		for col in getColumns():
-			m_Values[col] = objectRow[col]
+	def setValues(self,objectDBRow):
+		for col in self.getColumns():
+			m_Values[col] = objectDBRow[col]
 				
 	
   	@abc.abstractmethod
@@ -143,6 +143,6 @@ class DBObject(object):
 	
 	def printValString(self):
 		valString = ""
-		for col in getColumns():
+		for col in self.getColumns():
 			valString = valString + DBObject.m_Values[col] + ","
 		print valString

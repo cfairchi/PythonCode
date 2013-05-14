@@ -32,7 +32,8 @@ try:
   tempDrive.createSQLiteTable("BywayExplorer.db",true)
   
   for driveRow in driveRows:
-    drive = DBDrive(driveRow)
+    drive = DBDrive()
+    drive.setValues(driveRow)
     drive.printValString()
   
 except MySQLdb.Error, e:

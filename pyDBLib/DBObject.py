@@ -41,13 +41,12 @@ class DBObject(object):
 		#return _mysql.connect('localhost',getUserName(),getPassword(),theDBName)
 		return MySQLdb.Connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost')
 		
-	
 	def insertIntoMySQLDB(self, theDBName, theTableName):
 		con = None
 		try:
 			con = self.getMySqlConnection(theDBName)
 			cur = con.cursor()
-			values = self.getValues()
+			values = m_Values
 			colNames = self.getColumns()
 			colString = "("
 			valString = "("
@@ -86,7 +85,7 @@ class DBObject(object):
 		try:
 			con = sqlite3.connect(theSQLiteDatabaseName)
 			cur = con.cursor()
-			values = self.getValues()
+			values = m_Values
 			colNames = self.getColumns()
 			valString = " VALUES("
 			colIndex = 0

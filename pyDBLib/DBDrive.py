@@ -71,6 +71,28 @@ class DBDrive(DBObject):
 		cols.append(["imageCredits","TEXT"])
 		return cols
 
+	def setValues(self, theRow):
+		driveid = theRow["driveid"]
+		driveName = theRow["driveName"]
+		country = theRow["country"]
+		region = theRow["region"]
+		startLat = theRow["startLat"]
+		startLon = theRow["startLon"]
+		stopLat = theRow["stopLat"]
+		stopLon = theRow["stopLon"]
+		shortDescription = theRow["shortDescription"]
+		longDescription = theRow["longDescription"]
+		mileage = theRow["mileage"]
+		timeToAllow = theRow["timeToAllow"]
+		favorite = theRow["favorite"]
+		image = theRow["image"]
+		mapimage = theRow["mapimage"]
+		restrictions = theRow["restrictions"]
+		seasons = theRow["seasons"]
+		considerations = theRow["considerations"]
+		directions = theRow["directions"]
+		imageCredits = theRow["imageCredits"]
+	
 	def toString(self):
 		print (self.driveid + "," + self.driveName + "," + self.country + "," + self.region + "," + self.startLat + "," + self.startLon + "," + self.stopLat + "," + self.stopLon + "," + self.shortDescription  + "," + self.longDescription + "," + self.mileage + "," + self.timeToAllow + "," + self.favorite + "," + self.image + "," + self.mapimage + "," + self.restrictions + "," + self.seasons + "," + self.considerations + "," + self.directions + "," + self.imageCredits)
 		

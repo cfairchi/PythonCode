@@ -48,4 +48,8 @@ try:
     else:
       print( "File Already Exists: " + outFile)
     driveIndex = driveIndex + 1
-    
+    if (driveIndex > 0):
+      break
+  except MySQLdb.Error, e:
+    print "Error %d: %s" % (e.args[0],e.args[1])
+    sys.exit(1)

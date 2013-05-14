@@ -14,6 +14,11 @@ from chrispwd import getPassword
 class DBObject(object):
 	__metaclass__ = abc.ABCMeta
 
+	def __init__(self, objectDBRow):
+		for col in getColumns():
+			
+	
+	
   	@abc.abstractmethod
  	def getColumns(self):
  		raise NotImplementedError, "Please override in derived class"

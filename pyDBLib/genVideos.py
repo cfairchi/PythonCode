@@ -3,31 +3,43 @@
 
 import sys
 import os
-import sqlite3
-import DBDrive from DBDrive
-import DBCoordinate from DBCoordinate
-
-
+import MySQLdb
+import sys
+import DBObject
+import urllib2
 from csf_StreetView import generateVideoFromCoords
+from DBDrive import DBDrive
+from DBCoordinate import DBCoordinate
+from DBDrive import DBDrive
+from chrispwd import getUserName
+from chrispwd import getPassword
+
+
+def getMySqlConnection(theDBName):
+  return MySQLdb.Connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost')
+
+con = getMySqlConnection("djangosite")
+#con.autocommit(True);
 
 try:
   totalRequests = 0
-  con = sqlite3.connect('BywayExplorer.db")
-  cur = con.cursor()
-  cur.execute("SELECT driveid FROM " + DBDrive.getTableName())
+  cur = con.cursor(MySQLdb.cursors.DictCursor)
+  cur.execute("SELECT * FROM bywayexplorer_drive")
   driveRows = cur.fetchall()
+  
+  driveIndex = 0
   for driveRow in driveRows:
-    driveid = driveRow[0]
-    outFile = driveid + "_video")
+    driveid = driveRow["driveid"]
+    outFile = "video_" + driveid
     if (not os.path.exists(outFile)):
       coordList = []
-      print ("SELECT * FROM " + DBCoordinate.getTableName() " + " WHERE driveid='" + driveid + "'")
-      cur.execute("SELECT * FROM " + DBCoordinate.getTableName() " + " WHERE driveid='" + driveid + "'")
+      print ("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' ORDER BY routeOrder")
+      cur.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' ORDER BY routeOrder")
       coords = cur.fetchall()
     
       for coord in coords:
-        lat = coord[2]
-        lon = coord[3]
+        lat = coord["latitude"]
+        lon = coord["longitude"]
         coordList.append(lat + "," + lon + "," + 0)
         totalRequests = totalRequests + 1
       
@@ -36,6 +48,10 @@ try:
       print( "Done Generating: " + outFile + " Total Requests:" + totalRequests)
     else:
       print( "File Already Exists: " + outFile)
+    driveIndex += 1
+    if (driveIndex > 0):
+      break
+    
         
       
     

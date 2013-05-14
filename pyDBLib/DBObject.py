@@ -33,13 +33,13 @@ class DBObject(object):
  		raise NotImplementedError, "Please override in derived class"
  		
  	def getValues(self):
- 		return m_Values 
+ 		return self.m_Values 
  		
  	def setValue(self, theColName, theValue):
- 		m_Values[theColName] = theValue
+ 		self.m_Values[theColName] = theValue
  		
  	def getValue(self, theColName):
- 		return m_Values[theColName]
+ 		return self.m_Values[theColName]
 
 	def getMySqlConnection(self, theDBName):
 		

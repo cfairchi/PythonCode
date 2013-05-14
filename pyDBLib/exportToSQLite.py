@@ -35,7 +35,8 @@ try:
     drive = DBDrive()
     #drive.setValues(driveRow)
     for col in drive.getColumns():
-      drive.setColValue(col,driveRow[col]
+      drive.setValue(col,driveRow["driveid"])
+    
     drive.printValString()
   
 except MySQLdb.Error, e:

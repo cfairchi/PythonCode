@@ -14,7 +14,6 @@ from DBDrive import DBDrive
 from chrispwd import getUserName
 from chrispwd import getPassword
 
-
 def getMySqlConnection(theDBName):
   return MySQLdb.Connection(user=getUserName(), passwd=getPassword(), db=theDBName, host='localhost')
 
@@ -48,13 +47,5 @@ try:
       print( "Done Generating: " + outFile + " Total Requests:" + totalRequests)
     else:
       print( "File Already Exists: " + outFile)
-    driveIndex += 1
-    if (driveIndex > 0):
-      break
+    driveIndex = driveIndex + 1
     
-        
-      
-    
-  
-
-

@@ -13,11 +13,12 @@ from chrispwd import getPassword
 
 class DBObject(object):
 	__metaclass__ = abc.ABCMeta
+	m_Values = {}
 
 	def __init__(self, objectDBRow):
 		for col in getColumns():
-			
-	
+			m_Values[col] = objectRow[col]
+				
 	
   	@abc.abstractmethod
  	def getColumns(self):

@@ -40,7 +40,7 @@ class DBObject(object):
 		try:
 			con = self.getMySqlConnection(theDBName)
 			cur = con.cursor()
-			values = self.getValues
+			values = self.getValues()
 			colNames = self.getColumns()
 			colString = "("
 			valString = "("

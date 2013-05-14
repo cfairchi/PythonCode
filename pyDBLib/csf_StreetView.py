@@ -5,19 +5,22 @@ import cv
 import Image
 import time
 
-from cf_geo import distanceKM
-from cf_geo import bearing
+lib_path = os.path.abspath('../pyUtils/') 
+sys.path.append(lib_path)
+
+from csf_Geo import distanceKM
+from csf_Geo import bearing
 from GoogleAPIKey import getGoogleAPIKey
 
 def generateVideoFromCoords(theCoords, theVideoFileName):
     i = 0
     fourcc = cv.CV_FOURCC('P','I','M','1')
     outFile = theVideoFileName + ".mpeg"
-    w = cv.CreateVideoWriter(outFile, fourcc, 24,(300,300), is_color=1)
+    w = cv.CreateVideoWriter(outFile, fourcc, 30,(300,300), is_color=1)
 
     lastLLA = None
     
-    for txt in coords:
+    for txt in theCoords:
         if not txt.startswith('0') and not txt.startswith('<'):
             txt = txt.rstrip()
             llastr = txt.split(',')

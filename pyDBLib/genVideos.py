@@ -39,17 +39,18 @@ try:
       for coord in coords:
         lat = coord["latitude"]
         lon = coord["longitude"]
-        coordList.append(lat + "," + lon + "," + 0)
+        coordList.append(str(lat) + "," + str(lon) + ",0")
         totalRequests = totalRequests + 1
       
       print( "Generating: " + outFile)
-      generateVideoFromCoords(coordList,driveid + "_video")
-      print( "Done Generating: " + outFile + " Total Requests:" + totalRequests)
+      generateVideoFromCoords(coordList,"video_" + driveid)
+      print( "Done Generating: " + outFile + " Total Requests:" + str(totalRequests))
     else:
       print( "File Already Exists: " + outFile)
     driveIndex = driveIndex + 1
     if (driveIndex > 0):
       break
-  except MySQLdb.Error, e:
-    print "Error %d: %s" % (e.args[0],e.args[1])
-    sys.exit(1)
+  
+except MySQLdb.Error, e:
+  print "Error %d: %s" % (e.args[0],e.args[1])
+  sys.exit(1)

@@ -33,8 +33,9 @@ try:
     
     driveid = driveRow["driveid"]
     outFile = "kml_" + driveid + ".kml"
-    kmlFile = pykml.kml(outFile)
-    ls = pykml.LineString()
+    #kmlFile = pykml.kml(outFile)
+    ls = KML.LineString()
+    coords = KML.coordinates()
     ls.AltitudeMode = mode.clampToGround
 
     if (not os.path.exists(outFile)):
@@ -55,7 +56,7 @@ try:
       pm.addTofolder(driveid)
       kmlFile.placemarks.append(pm)
           
-      print( "Generating KML " + )
+      print( "Generating KML "  )
       kmlFile.write()
       print( "Done Generating: " + outFile + " Total Requests:" + str(totalRequests))
     else:

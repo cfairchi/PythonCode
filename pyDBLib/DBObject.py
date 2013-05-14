@@ -90,7 +90,7 @@ class DBObject(object):
 	        		if (col[1] == "INT"):
 					valString = valString + str(values[col[0]]).replace("'","''")
 				else:
-	        			valString = valString + "'" + values[col[0]].replace("'","''") + "'"
+	        			valString = valString + "'" + str(values[col[0]]).replace("'","''") + "'"
 				colIndex = colIndex + 1
 	        	valString = valString + ")"
 			

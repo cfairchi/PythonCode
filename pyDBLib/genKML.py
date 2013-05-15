@@ -27,7 +27,7 @@ def createLineStringKML(theDBDrive, theCoords, theOutFile):
   f.write("<kml xmlns=\"http://earth.google.com/kml/2.0\">" + os.linesep)
   f.write("<Document>" + os.linesep)
   f.write("<name>" +  theDBDrive.driveName + "</name>" + os.linesep)
-  f.write("<description>" + theDBDrive.getDescription + "</description>" + os.linesep)
+  f.write("<description>" + theDBDrive.shortDescription + "</description>" + os.linesep)
   f.write("<LineString><coordinates>" + os.linesep)
   for coord in theCoords:
     lat = coord["latitude"]
@@ -36,7 +36,7 @@ def createLineStringKML(theDBDrive, theCoords, theOutFile):
     f.write(str(lat) + "," + str(lon) + ",0 ")
   f.write("</coordinates></LineString>" + os.linesep)    
   f.write("</Document> </kml>")
-  
+  f.close()
   
   
 try:

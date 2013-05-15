@@ -8,8 +8,8 @@ import time
 lib_path = os.path.abspath('../pyUtils/')
 sys.path.append(lib_path)
 
-from cf_geo import distanceKM
-from cf_geo import bearing
+from csf_Geo import distanceKM
+from csf_Geo import bearing
 from GoogleAPIKey import getGoogleAPIKey
 
 def generateVideoFromCoords(theCoords, theVideoFileName):
@@ -20,9 +20,10 @@ def generateVideoFromCoords(theCoords, theVideoFileName):
 
     lastLLA = None
     
-    for txt in coords:
+    for txt in theCoords:
         if not txt.startswith('0') and not txt.startswith('<'):
-            txt = txt.rstrip()
+            print(txt)
+	    txt = txt.rstrip()
             llastr = txt.split(',')
             lat = float(llastr[1])
             lon = float(llastr[0])
@@ -53,7 +54,7 @@ def generateVideoFromCoords(theCoords, theVideoFileName):
     
     
 def generateVideoFromKML(thekml, theVideoFileName):
-    content = thekml.split('<LineString>')
+    content = thekml.split('<coordinates>')
     allcoords = str(content[1])
     coords = allcoords.split(' ')
     generateVideoFromCoords(coords,theVideoFileName)

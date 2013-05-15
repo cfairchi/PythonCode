@@ -1,2 +1,2 @@
-def getGoogleAPIKey
-    return "&key="
+def getGoogleAPIKey():
+    return "&key=AIzaSyBqftMUNYnTPUaNRoovD9AfCeHyye8H6lk"

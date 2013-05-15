@@ -34,6 +34,9 @@ def createLineStringKML(theDBDrive, theCoords, theOutFile):
     ll = (lon,lat,0)
     
   f.write("</Document> </kml>")
+  
+  
+  
 try:
   totalRequests = 0
   cur = con.cursor(MySQLdb.cursors.DictCursor)
@@ -43,6 +46,10 @@ try:
   driveIndex = 0
   for driveRow in driveRows:
     driveid = driveRow["driveid"]
+    drive = DBDrive()
+    drive.driveId = driveRow["driveid"]
+    drive.shortDescription = driveRow["shortDescription"]
+    drive.driveName = driveRow["driveName"]
     outFile = "kml_" + driveid + ".kml"
     if (not os.path.exists(outFile)):
       print ("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' ORDER BY routeOrder")

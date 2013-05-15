@@ -20,15 +20,20 @@ def getMySqlConnection(theDBName):
 con = getMySqlConnection("djangosite")
 #con.autocommit(True);
 
-def createLineStringKML(theDriveId, theCoords, theOutFile):
-  print( "Generating KML for " + theDriveId)
-  
+def createLineStringKML(theDBDrive, theCoords, theOutFile):
+  print( "Generating KML for " + theDBDrive.driveid)
+  f = open(theOutFile,"w+")
+  f.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + os.linesep)
+  f.write("<kml xmlns=\"http://earth.google.com/kml/2.0\">" + os.linesep)
+  f.write("<Document>" + os.linesep)
+  f.write("<name>" +  theDBDrive.driveName + "</name>" + os.linesep)
+  f.write("<description>" + theDBDrive.getDescription + "</description>" + os.linesep)
   for coord in theCoords:
     lat = coord["latitude"]
     lon = coord["longitude"]
     ll = (lon,lat,0)
     
-
+  f.write("</Document> </kml>")
 try:
   totalRequests = 0
   cur = con.cursor(MySQLdb.cursors.DictCursor)

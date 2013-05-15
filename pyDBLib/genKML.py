@@ -28,11 +28,13 @@ def createLineStringKML(theDBDrive, theCoords, theOutFile):
   f.write("<Document>" + os.linesep)
   f.write("<name>" +  theDBDrive.driveName + "</name>" + os.linesep)
   f.write("<description>" + theDBDrive.getDescription + "</description>" + os.linesep)
+  f.write("<LineString><coordinates>" + os.linesep)
   for coord in theCoords:
     lat = coord["latitude"]
     lon = coord["longitude"]
     ll = (lon,lat,0)
-    
+    f.write(str(lat) + "," + str(lon) + ",0 ")
+  f.write("</coordinates></LineString>" + os.linesep)    
   f.write("</Document> </kml>")
   
   
@@ -47,15 +49,16 @@ try:
   for driveRow in driveRows:
     driveid = driveRow["driveid"]
     drive = DBDrive()
-    drive.driveId = driveRow["driveid"]
-    drive.shortDescription = driveRow["shortDescription"]
-    drive.driveName = driveRow["driveName"]
+    drive.setValues(driveRow)
+    #drive.driveId = driveRow["driveid"]
+    #drive.shortDescription = driveRow["shortDescription"]
+    #drive.driveName = driveRow["driveName"]
     outFile = "kml_" + driveid + ".kml"
     if (not os.path.exists(outFile)):
       print ("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' ORDER BY routeOrder")
       cur.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' ORDER BY routeOrder")
       coords = cur.fetchall()
-      createLineStringKML(driveid,coords,outFile)  
+      createLineStringKML(drive,coords,outFile)  
     else:
       print( "File Already Exists: " + outFile)
     driveIndex = driveIndex + 1

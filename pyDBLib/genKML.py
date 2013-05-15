@@ -39,7 +39,7 @@ def createLineStringKML(theDBDrive, theCoords, theOutFile):
     lat = coord["latitude"]
     lon = coord["longitude"]
     ll = (lon,lat,0)
-    f.write(str(lat) + "," + str(lon) + ",0 ")
+    f.write(str(lon) + "," + str(lat) + ",0 ")
   
   f.write("</coordinates></LineString>" + os.linesep)    
   f.write("</Placemark>")

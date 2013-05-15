@@ -6,8 +6,7 @@ import os
 import MySQLdb
 import sys
 import DBObject
-import urllib2
-import simplekml
+
 
 from DBDrive import DBDrive
 from DBCoordinate import DBCoordinate
@@ -21,6 +20,15 @@ def getMySqlConnection(theDBName):
 con = getMySqlConnection("djangosite")
 #con.autocommit(True);
 
+def createLineStringKML(theDriveId, theCoords, theOutFile):
+  print( "Generating KML for " + theDriveId)
+  
+  for coord in theCoords:
+    lat = coord["latitude"]
+    lon = coord["longitude"]
+    ll = (lon,lat,0)
+    
+
 try:
   totalRequests = 0
   cur = con.cursor(MySQLdb.cursors.DictCursor)
@@ -29,34 +37,13 @@ try:
   
   driveIndex = 0
   for driveRow in driveRows:
-    
     driveid = driveRow["driveid"]
     outFile = "kml_" + driveid + ".kml"
-    #kmlFile = pykml.kml(outFile)
-    
-    coords = []
-    
-
     if (not os.path.exists(outFile)):
       print ("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' ORDER BY routeOrder")
       cur.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' ORDER BY routeOrder")
       coords = cur.fetchall()
-    
-      for coord in coords:
-        lat = coord["latitude"]
-        lon = coord["longitude"]
-        ll = (lon,lat,0)
-        coords.append(ll)
-    
-      kml = simplekml.Kml()
-      ls = kml.newlinestring(name=driveRow["driveName"])
-      ls.coords = coords
-      ls.extrude = 0
-      ls.altitudemode = simplekml.AltitudeMode.clampToGround
-      kml.save(outFile)
-          
-      print( "Generating KML "  )
-      print( "Done Generating: " + outFile + " Total Requests:" + str(totalRequests))
+      createLineStringKML(driveid,coords,outFile)  
     else:
       print( "File Already Exists: " + outFile)
     driveIndex = driveIndex + 1

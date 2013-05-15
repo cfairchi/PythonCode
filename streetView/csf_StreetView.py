@@ -5,6 +5,9 @@ import cv
 import Image
 import time
 
+lib_path = os.path.abspath('../pyUtils/')
+sys.path.append(lib_path)
+
 from cf_geo import distanceKM
 from cf_geo import bearing
 from GoogleAPIKey import getGoogleAPIKey

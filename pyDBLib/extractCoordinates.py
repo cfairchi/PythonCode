@@ -26,6 +26,7 @@ def clean(theTxt):
         sys.stderr.write('ERROR in clean(): %s\n' % str(err))
         
 def parseCoordinates(theDriveId, theCoords, theSubRoute):
+	print("Parsing Coordinates for: " + theDriveId)
 	coords = []
 	index = 0
 	splitCoords = theCoords.split(" ")
@@ -37,9 +38,8 @@ def parseCoordinates(theDriveId, theCoords, theSubRoute):
 		point.routeOrder = index 
 		point.longitude = splitStr[0]
 		point.latitude = splitStr[1]
-		point.insertIntoSQLiteDB("BywayExplorer.db")
 		index = index + 1
-		coords.insertIntoMySQLDB("djangoSite","bywayexplorer_coordinate")
+		point.insertIntoMySQLDB("djangosite","bywayexplorer_coordinate")
 		print point.toString()
 		coords.append(point)
 	

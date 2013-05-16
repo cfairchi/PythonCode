@@ -28,21 +28,25 @@ def createLineStringKML(theDBDrive, theCoords, theOutFile):
   f.write("<kml xmlns=\"http://www.opengis.net/kml/2.2\">" + os.linesep)
   f.write("<Document>" + os.linesep)
   f.write("<name>" + theDBDrive.driveName + "</name>")
-  f.write("<Placemark>" + os.linesep)
-  f.write("<name>" + theDBDrive.driveName + "</name>" + os.linesep)
-  f.write("<description>" + theDBDrive.shortDescription + "</description>" + os.linesep)
-  f.write("<LineString>" + os.linesep)
-  f.write("<altitudeMode>clampToGround</altitudeMode>" + os.linesep)
-  f.write("<coordinates>" + os.linesep) 
   
-  for coord in theCoords:
-    lat = coord["latitude"]
-    lon = coord["longitude"]
-    ll = (lon,lat,0)
-    f.write(str(lon) + "," + str(lat) + ",0 ")
-  
-  f.write("</coordinates></LineString>" + os.linesep)    
-  f.write("</Placemark>")
+  i = 0
+  for coords in theCoords:
+    f.write("<Placemark>" + os.linesep)
+    f.write("<name>" + theDBDrive.driveName + "_" + str(i) + "</name>" + os.linesep)
+    f.write("<description>" + theDBDrive.shortDescription + "</description>" + os.linesep)
+    f.write("<LineString>" + os.linesep)
+    f.write("<altitudeMode>clampToGround</altitudeMode>" + os.linesep)
+    f.write("<tessellate>1</tessellate>" + os.linesep)
+    f.write("<coordinates>" + os.linesep) 
+      for coord in theCoords:
+        lat = coord["latitude"]
+        lon = coord["longitude"]
+        ll = (lon,lat,0)
+        f.write(str(lon) + "," + str(lat) + ",0 ")
+    f.write("</coordinates></LineString>" + os.linesep)    
+    f.write("</Placemark>")
+    i+=1
+    
   f.write("</Document> </kml>")
   f.close()
   
@@ -58,15 +62,19 @@ try:
     driveid = driveRow["driveid"]
     drive = DBDrive()
     drive.setValues(driveRow)
-    #drive.driveId = driveRow["driveid"]
-    #drive.shortDescription = driveRow["shortDescription"]
-    #drive.driveName = driveRow["driveName"]
     outFile = "kml_" + driveid + ".kml"
     if (not os.path.exists(outFile)):
-      print ("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' ORDER BY routeOrder")
-      cur.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' ORDER BY routeOrder")
-      coords = cur.fetchall()
-      createLineStringKML(drive,coords,outFile)  
+      print("SELECT distinct subRoute from bywayexplorer_coordinate WHERE driveid = '" driveid + "' ORDER BY subRoute")
+      cur.execute("SELECT distinct subRoute from bywayexplorer_coordinate WHERE driveid = '" driveid + "' ORDER BY subRoute")
+      suroutes = cur.fetchall()
+      allCoords = []
+      for subRoute in subRoutes:
+        print ("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' AND subRoute = " + subRoute["subRoute"] + " ORDER BY routeOrder")
+        cur.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' AND subRoute = " + subRoute["subRoute"] + " ORDER BY routeOrder")
+        coords = cur.fetchall()
+        allCorrds.append(coords)
+        
+      createLineStringKML(drive,allCoords,outFile)  
     else:
       print( "File Already Exists: " + outFile)
     driveIndex = driveIndex + 1

@@ -26,7 +26,7 @@ def clean(theTxt):
         sys.stderr.write('ERROR in clean(): %s\n' % str(err))
         
 def parseCoordinates(theDriveId, theCoords, theSubRoute):
-	print("Parsing Coordinates for: " + theDriveId)
+	#print("Parsing Coordinates for: " + theDriveId)
 	coords = []
 	index = 0
 	splitCoords = theCoords.split(" ")

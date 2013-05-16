@@ -13,7 +13,8 @@ mls = "{http://www.opengis.net/gml}MultiLineString"
 lsm = "{http://www.opengis.net/gml}lineStringMember"
 ls = "{http://www.opengis.net/gml}LineString"
 cs = "{http://www.opengis.net/gml}coordinates"
- 
+
+
 def clean(theTxt):
     try:
         theTxt = theTxt.encode('ascii','ignore')
@@ -24,25 +25,28 @@ def clean(theTxt):
     except Exception, err:
         sys.stderr.write('ERROR in clean(): %s\n' % str(err))
         
-def parseCoordinates(theDriveId, theStartIndex, theCoords):
-  coords = []
+def parseCoordinates(theDriveId, theStartIndex, theCoords, theSubRoute):
+    coords = []
 	index = theStartIndex
 	splitCoords = theCoords.split(" ")
 	for i in range(0,len(splitCoords)-1):
 		splitStr = splitCoords[i].split(",")
 		point = DBCoordinate()
 		point.driveid = theDriveId
+		point.subRoute = theSubRoute
 		point.routeOrder = index 
 		point.longitude = splitStr[0]
 		point.latitude = splitStr[1]
 		point.insertIntoSQLiteDB("BywayExplorer.db")
 		index = index + 1
+		coords.insertIntoMySQLDB("djangoSite","bywayexplorer_coordinate")
+		print point.toString()
 		coords.append(point)
 	
 	return coords
 	
 
-def findLineString(theDriveId, route, theStartIndex):
+def findLineString(theDriveId, route, theStartIndex, theSubRoute):
 	routeCoords = []
 	if (route.find(ls) is not None):
     		if (route.find(ls).find(cs) is not None):
@@ -64,20 +68,16 @@ for byway in byways:
     if (byway.find("id") is not None and byway.find("id").text is not None):
     	drive.driveid = byway.find("id").text
     
-    rootCoords = []    
+    routeCoords = []    
     if (byway.find("Route") is not None):
-     	route = byway.find("Route")
+        route = byway.find("Route")
 	    if (route.find(mls) is not None):
-        subRoute = 0
-  		  startIndex = 0
-  		  for lineStringMember in route.find(mls).findall(lsm):
-			    tRootCoords = findLineString(drive.driveid, lineStringMember, len(rootCoords))
-			    rootCoords = rootCoords + tRootCoords
-	      elif (route.find(ls) is not None):
+            subRoute = 0
+  		    startIndex = 0
+  		    for lineStringMember in route.find(mls).findall(lsm):
+			    rootCoords = findLineString(drive.driveid, lineStringMember, len(rootCoords), subRoute)
+			    subRoute += 1
+	    elif (route.find(ls) is not None):
+	    	subRoute = 0
 	        routeCoords = findLineString(drive.driveid, route, 0)
 
-#	breakIndex = breakIndex + 1
-#	if (breakIndex > 5):
-#		break	 	 
-    drive.insertIntoSQLiteDB("BywayExplorer.db")
-    print drive.driveid

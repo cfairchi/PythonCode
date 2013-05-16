@@ -25,9 +25,9 @@ def clean(theTxt):
     except Exception, err:
         sys.stderr.write('ERROR in clean(): %s\n' % str(err))
         
-def parseCoordinates(theDriveId, theStartIndex, theCoords, theSubRoute):
+def parseCoordinates(theDriveId, theCoords, theSubRoute):
     coords = []
-	index = theStartIndex
+	index = 0
 	splitCoords = theCoords.split(" ")
 	for i in range(0,len(splitCoords)-1):
 		splitStr = splitCoords[i].split(",")
@@ -46,11 +46,11 @@ def parseCoordinates(theDriveId, theStartIndex, theCoords, theSubRoute):
 	return coords
 	
 
-def findLineString(theDriveId, route, theStartIndex, theSubRoute):
+def findLineString(theDriveId, route, theSubRoute):
 	routeCoords = []
 	if (route.find(ls) is not None):
     		if (route.find(ls).find(cs) is not None):
-			routeCoords = parseCoordinates(theDriveId, theStartIndex, route.find(ls).find(cs).text)
+			routeCoords = parseCoordinates(theDriveId, route.find(ls).find(cs).text,theSubRoute)
 	return routeCoords
 	
 	
@@ -75,7 +75,7 @@ for byway in byways:
             subRoute = 0
   		    startIndex = 0
   		    for lineStringMember in route.find(mls).findall(lsm):
-			    rootCoords = findLineString(drive.driveid, lineStringMember, len(rootCoords), subRoute)
+			    rootCoords = findLineString(drive.driveid, lineStringMember, subRoute)
 			    subRoute += 1
 	    elif (route.find(ls) is not None):
 	    	subRoute = 0

@@ -38,11 +38,11 @@ def createLineStringKML(theDBDrive, theCoords, theOutFile):
     f.write("<altitudeMode>clampToGround</altitudeMode>" + os.linesep)
     f.write("<tessellate>1</tessellate>" + os.linesep)
     f.write("<coordinates>" + os.linesep) 
-      for coord in theCoords:
-        lat = coord["latitude"]
-        lon = coord["longitude"]
-        ll = (lon,lat,0)
-        f.write(str(lon) + "," + str(lat) + ",0 ")
+    for c in coords:
+      lat = c["latitude"]
+      lon = c["longitude"]
+      ll = (lon,lat,0)
+      f.write(str(lon) + "," + str(lat) + ",0 ")
     f.write("</coordinates></LineString>" + os.linesep)    
     f.write("</Placemark>")
     i+=1
@@ -64,15 +64,15 @@ try:
     drive.setValues(driveRow)
     outFile = "kml_" + driveid + ".kml"
     if (not os.path.exists(outFile)):
-      print("SELECT distinct subRoute from bywayexplorer_coordinate WHERE driveid = '" driveid + "' ORDER BY subRoute")
-      cur.execute("SELECT distinct subRoute from bywayexplorer_coordinate WHERE driveid = '" driveid + "' ORDER BY subRoute")
-      suroutes = cur.fetchall()
+      print("SELECT distinct subRoute from bywayexplorer_coordinate WHERE driveid = '" + driveid + "' ORDER BY subRoute")
+      cur.execute("SELECT distinct subRoute from bywayexplorer_coordinate WHERE driveid = '" + driveid + "' ORDER BY subRoute")
+      subRoutes = cur.fetchall()
       allCoords = []
       for subRoute in subRoutes:
-        print ("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' AND subRoute = " + subRoute["subRoute"] + " ORDER BY routeOrder")
-        cur.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' AND subRoute = " + subRoute["subRoute"] + " ORDER BY routeOrder")
+        print ("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' AND subRoute = " + str(subRoute["subRoute"]) + " ORDER BY routeOrder")
+        cur.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' AND subRoute = " + str(subRoute["subRoute"]) + " ORDER BY routeOrder")
         coords = cur.fetchall()
-        allCorrds.append(coords)
+        allCoords.append(coords)
         
       createLineStringKML(drive,allCoords,outFile)  
     else:

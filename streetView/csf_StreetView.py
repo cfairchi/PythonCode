@@ -55,13 +55,15 @@ def generateVideoFromCoords(theCoords, theVideoFileName):
     
 def generateVideoFromKML(thekml, theVideoFileName):
     content = thekml.split('<coordinates>')
-    allcoords = str(content[1])
-    outFile = theVideoFileName.replace(".kml","").replace("kml_","video_") + ".mpeg"
-    coords = allcoords.split(' ')
-    if (not os.path.exists(outFile)):
-	generateVideoFromCoords(coords,theVideoFileName)
-    else:
-        print("File already exists: " + theVideoFileName)
+    for i in range(1,len(content)-1):
+    	allcoords = allcoords + str(content[i]) + " "
+    print allcoords	
+    #outFile = theVideoFileName.replace(".kml","").replace("kml_","video_") + ".mpeg"
+    #coords = allcoords.split(' ')
+    #if (not os.path.exists(outFile)):
+#	generateVideoFromCoords(coords,theVideoFileName)
+ #   else:
+  #      print("File already exists: " + theVideoFileName)
     
     
         

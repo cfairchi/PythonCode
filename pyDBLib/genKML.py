@@ -36,6 +36,7 @@ def createLineStringKML(theDBDrive, theCoords, theOutFile):
     f.write("<description>" + theDBDrive.shortDescription + "</description>" + os.linesep)
     f.write("<LineString>" + os.linesep)
     f.write("<altitudeMode>clampToGround</altitudeMode>" + os.linesep)
+    f.write("<tessellate>1</tessellate>" + os.linesep)
     f.write("<coordinates>" + os.linesep) 
       for coord in theCoords:
         lat = coord["latitude"]
@@ -63,12 +64,13 @@ try:
     drive.setValues(driveRow)
     outFile = "kml_" + driveid + ".kml"
     if (not os.path.exists(outFile)):
+      print("SELECT distinct subRoute from bywayexplorer_coordinate WHERE driveid = '" driveid + "' ORDER BY subRoute")
       cur.execute("SELECT distinct subRoute from bywayexplorer_coordinate WHERE driveid = '" driveid + "' ORDER BY subRoute")
       suroutes = cur.fetchall()
       allCoords = []
       for subRoute in subRoutes:
         print ("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' AND subRoute = " + subRoute["subRoute"] + " ORDER BY routeOrder")
-        cur.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' ORDER BY routeOrder")
+        cur.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' AND subRoute = " + subRoute["subRoute"] + " ORDER BY routeOrder")
         coords = cur.fetchall()
         allCorrds.append(coords)
         

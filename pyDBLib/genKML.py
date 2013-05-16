@@ -64,12 +64,12 @@ try:
     drive.setValues(driveRow)
     outFile = "kml_" + driveid + ".kml"
     if (not os.path.exists(outFile)):
-      print("SELECT distinct subRoute from bywayexplorer_coordinate WHERE driveid = '" + driveid + "' ORDER BY subRoute")
+      #print("SELECT distinct subRoute from bywayexplorer_coordinate WHERE driveid = '" + driveid + "' ORDER BY subRoute")
       cur.execute("SELECT distinct subRoute from bywayexplorer_coordinate WHERE driveid = '" + driveid + "' ORDER BY subRoute")
       subRoutes = cur.fetchall()
       allCoords = []
       for subRoute in subRoutes:
-        print ("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' AND subRoute = " + str(subRoute["subRoute"]) + " ORDER BY routeOrder")
+        #print ("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' AND subRoute = " + str(subRoute["subRoute"]) + " ORDER BY routeOrder")
         cur.execute("SELECT * FROM bywayexplorer_coordinate WHERE driveid='" + driveid + "' AND subRoute = " + str(subRoute["subRoute"]) + " ORDER BY routeOrder")
         coords = cur.fetchall()
         allCoords.append(coords)

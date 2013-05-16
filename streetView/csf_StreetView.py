@@ -14,9 +14,9 @@ from GoogleAPIKey import getGoogleAPIKey
 
 def generateVideoFromCoords(theCoords, theVideoFileName):
     i = 0
-    fourcc = cv.CV_FOURCC('X','2','6','4')
-    outFile = theVideoFileName.replace(".kml","").replace("kml_","video_") + ".mp4"
-    w = cv.CreateVideoWriter(outFile, fourcc, 24,(300,300), is_color=1)
+    fourcc = cv.CV_FOURCC('X','V','I','D')
+    outFile = theVideoFileName.replace(".kml","").replace("kml_","video_") + ".avi"
+    w = cv.CreateVideoWriter(outFile, fourcc, 30,(300,200), is_color=1)
 
     lastLLA = None
     
@@ -65,3 +65,4 @@ def generateVideoFromKML(thekml, theVideoFileName):
     
     
         
+

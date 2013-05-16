@@ -55,9 +55,10 @@ def generateVideoFromCoords(theCoords, theVideoFileName):
     
 def generateVideoFromKML(thekml, theVideoFileName):
     content = thekml.split('<coordinates>')
-    for i in range(1,len(content)-1):
+    print(content)
+    allcoords = ""
+    for i in range(1,len(content)-1,2):
     	allcoords = allcoords + str(content[i]) + " "
-    print allcoords	
     #outFile = theVideoFileName.replace(".kml","").replace("kml_","video_") + ".mpeg"
     #coords = allcoords.split(' ')
     #if (not os.path.exists(outFile)):

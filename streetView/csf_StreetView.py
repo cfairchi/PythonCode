@@ -14,8 +14,9 @@ from GoogleAPIKey import getGoogleAPIKey
 
 def generateVideoFromCoords(theCoords, theVideoFileName):
     i = 0
+    requestCount = 0
     fourcc = cv.CV_FOURCC('X','V','I','D')
-    outFile = theVideoFileName.replace(".kml","").replace("kml_","video_") + ".avi"
+    outFile = theVideoFileName #theVideoFileName.replace(".kml","").replace("kml_","video_") + ".avi"
     w = cv.CreateVideoWriter(outFile, fourcc, 30,(300,200), is_color=1)
 
     lastLLA = None
@@ -40,6 +41,7 @@ def generateVideoFromCoords(theCoords, theVideoFileName):
             
             urlString = "http://maps.googleapis.com/maps/api/streetview?size=300x300" + location + "&fov=90" + head + "&pitch=10&sensor=false" + getGoogleAPIKey()
             urllib.urlretrieve(urlString, "sv_" + str(i) +".jpg")
+            requestCount += 1
             statinfo = os.stat("sv_" + str(i) +".jpg")
             if (statinfo.st_size > 5000):
                 img = cv.LoadImage("sv_" + str(i) +".jpg")
@@ -51,22 +53,24 @@ def generateVideoFromCoords(theCoords, theVideoFileName):
             print i
             i+=1
     print str(i) + " Images Processed"
-    
+    return requestCount
     
 def generateVideoFromKML(thekml, theVideoFileName):
+    requests = 0
     content = thekml.split('<coordinates>')
     allcoords = ""
     for i in range(1,len(content)):
     	#print (content[i].split("</coordinates>")[0])
     	allcoords = allcoords + content[i].split("</coordinates>")[0] + " "
     
-    outFile = theVideoFileName.replace(".kml","").replace("kml_","video_") + ".mpeg"
+    outFile = theVideoFileName#.replace(".kml","").replace("kml_","video_") + ".mpeg"
     coords = allcoords.split(' ')
     if (not os.path.exists(outFile)):
-	generateVideoFromCoords(coords,theVideoFileName)
+	requests = generateVideoFromCoords(coords,theVideoFileName)
     else:
         print("File already exists: " + theVideoFileName)
     
+    return requests
     
         
 

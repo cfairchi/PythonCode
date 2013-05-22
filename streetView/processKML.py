@@ -12,7 +12,7 @@ for root, dirs, files in os.walk("/var/www/staticfiles/kml/"):
 		
 		print ("Checking for " + checkFile)
         	if (not os.path.exists(checkFile)):
-			if requestCount > 23000:
+			if requestCount >23000:
 				print ("Aborting RequestCount=" + requestCount)
 				break
 			print("Processing " + outFile)

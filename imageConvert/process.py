@@ -6,10 +6,15 @@ import os
 import Image
 
 
-for root, dirs, files in os.walk("~/git-repos/PythonCode/imageConvert/"):
+for root, dirs, files in os.walk("."):
     for fName in files:
-	print fName
-        if fName.endswith(".gif"):
-		print fName
+        if fName.endswith(".png"):
+		im = Image.open(fName)
+		if im.mode != "RGB":
+			im = im.convert("RGB")
+		newName = fName.replace(".png",".jpg")
+		print("replacing " + fName + " with " + newName)
+		im.save(newName,"JPEG")
+		
 
 

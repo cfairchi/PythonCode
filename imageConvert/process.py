@@ -35,7 +35,7 @@ def convert(fName):
 for root, dirs, files in os.walk("."):
     for fName in files:
         if fName.endswith(".jpg"):
-		resizeImage(fName, 300)
+		ResizeImageByWidth(fName, 300)
 		
 
 

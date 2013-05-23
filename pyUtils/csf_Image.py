@@ -1,15 +1,26 @@
 import Image
 
-def resizeImage(path, baseWidth):
-   import PIL
-   from PIL import Image
+import PIL
+from PIL import Image
 
-   basewidth = 300
+def ResizeJPGByWidth(path, basewidth):
    img = Image.open(path)
+   if img.mode != "RGB":
+      img = img.convert("RGB")
    wpercent = (basewidth/float(img.size[0]))
    hsize = int((float(img.size[1])*float(wpercent)))
    img = img.resize((basewidth,hsize), PIL.Image.ANTIALIAS)
+   if ".jpg" in path:
+      path = path.replace(".jpg","_" + str(basewidth) + ".jpg")
+   elif ".png" in path:
+      path = path.replace(".png","_" + str(basewidth) + ".png")
+   elif ".gif" in path:
+      path = path.replace(".gif","_" + str(basewidth) + ".gif")
+   else:
+      path = path + "_Resized_" + basewidth
    img.save(path)
+   print("Resized: " + path)
+   
 
 def resize(img, box, fit, out):
    '''Downsample the image.

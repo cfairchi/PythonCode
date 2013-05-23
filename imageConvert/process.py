@@ -9,6 +9,8 @@ import Image
 #basewidth = new width of image, example 300
 def resizeImage(path, basewidth):
    img = Image.open(path)
+   if img.mode != "RGB":
+	img = img.convert("RGB")
    wpercent = (basewidth/float(img.size[0]))
    hsize = int((float(img.size[1])*float(wpercent)))
    img = img.resize((basewidth,hsize), PIL.Image.ANTIALIAS)
@@ -21,9 +23,9 @@ def convert(fName):
 		im = Image.open(fName)
 		if im.mode != "RGB":
 			im = im.convert("RGB")
-			newName = fName.replace(".png",".jpg")
-			print("replacing " + fName + " with " + newName)
-			im.save(newName,"JPEG")
+		newName = fName.replace(".png",".jpg")
+		print("replacing " + fName + " with " + newName)
+		im.save(newName,"JPEG")
 		
 for root, dirs, files in os.walk("."):
     for fName in files:

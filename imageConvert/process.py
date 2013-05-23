@@ -16,6 +16,7 @@ def resizeImage(path, basewidth):
    img = img.resize((basewidth,hsize), PIL.Image.ANTIALIAS)
    path = path.replace(".jpg","_300.jpg")
    img.save(path)
+   print("Resized: " + path)
    
 def convert(fName):
 	if fName.endswith(".png"):

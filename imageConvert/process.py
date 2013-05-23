@@ -9,7 +9,8 @@ import Image
 lib_path = os.path.abspath('../pyUtils/')
 sys.path.append(lib_path)
 
-from csf
+from csf_image import ResizeImageByWidth
+
 #basewidth = new width of image, example 300
 def resizeImage(path, basewidth):
    img = Image.open(path)

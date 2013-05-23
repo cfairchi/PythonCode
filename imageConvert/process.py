@@ -1,15 +1,13 @@
 #!/usr/bin/python
 # _*_ coding: utf-8 _*_
 
-
+import PIL
+from PIL import Image
 import os
 import Image
 
 #basewidth = new width of image, example 300
 def resizeImage(path, basewidth):
-   import PIL
-   from PIL import Image
-
    img = Image.open(path)
    wpercent = (basewidth/float(img.size[0]))
    hsize = int((float(img.size[1])*float(wpercent)))
@@ -30,7 +28,7 @@ def convert(fName):
 for root, dirs, files in os.walk("."):
     for fName in files:
         if fName.endswith(".jpg"):
-		resizeImage(path, 300)
+		resizeImage(fName, 300)
 		
 
 

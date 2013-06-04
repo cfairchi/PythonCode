@@ -31,7 +31,7 @@ try:
 	liteDrives = liteCur.fetchall()
 
 	for driveRow in liteDrives:
-		cur.execute("UPDATE bywayexplorer_drive SET region = %s WHERE driveid = %s", (driveRow["region"], driveRow["id"]))    
+		cur.execute("UPDATE bywayexplorer_poi SET region = %s WHERE driveid = %s", (driveRow["region"], driveRow["id"]))    
 		print driveRow["id"] + " Number of rows updated: %d" % cur.rowcount
 		cur.execute("UPDATE bywayexplorer_drive SET restrictions = %s WHERE driveid = %s", (driveRow["restrictions"], driveRow["id"]))    
 		print driveRow["id"] + " Number of rows updated: %d" % cur.rowcount

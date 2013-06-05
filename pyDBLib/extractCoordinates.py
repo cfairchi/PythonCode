@@ -2,6 +2,8 @@
 # _*_ coding: utf-8 _*_
 
 import sys
+import os
+import glob
 import DBObject
 import urllib2
 from DBDrive import DBDrive
@@ -54,7 +56,11 @@ def findLineString(theDriveId, route, theSubRoute):
 	return routeCoords
 	
 	
-	
+def copyrightImage(theDriveId):
+	os.chdir("/var/www/staticfiles/images/")
+	for files in glob.glob("*" + theDriveId + "*"):
+    		print files
+    		
 	
 drive = DBDrive()
 coord = DBCoordinate()
@@ -76,6 +82,7 @@ for byway in byways:
 		asset = photo.find("Asset")
 		if (asset.find("Copyright") is not None):
 			print("Found Copyright " + drive.driveid + asset.find("Copyright").text )
+			copyrightImage(drive.driveid)
 			
     	
     	

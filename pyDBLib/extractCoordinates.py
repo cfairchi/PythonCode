@@ -68,16 +68,21 @@ for byway in byways:
     if (byway.find("id") is not None and byway.find("id").text is not None):
     	drive.driveid = byway.find("id").text
     
-    routeCoords = []    
-    if (byway.find("Route") is not None):
-	route = byway.find("Route")
-	if (route.find(mls) is not None):
-        	subRoute = 0
-  		startIndex = 0
-  		for lineStringMember in route.find(mls).findall(lsm):
-			rootCoords = findLineString(drive.driveid, lineStringMember, subRoute)
-			subRoute += 1
-	elif (route.find(ls) is not None):
-	    	subRoute = 0
-	        routeCoords = findLineString(drive.driveid, route, 0)
+    if (byway.find("Copyright") is not None):
+    	copyright = byway.find("Copytright")
+    	
+    	print(copyright.text)
+    	
+    #routeCoords = []    
+    #if (byway.find("Route") is not None):
+#	route = byway.find("Route")
+#	if (route.find(mls) is not None):
+ #       	subRoute = 0
+  #		startIndex = 0
+  #		for lineStringMember in route.find(mls).findall(lsm):
+#			rootCoords = findLineString(drive.driveid, lineStringMember, subRoute)
+#			subRoute += 1
+#	elif (route.find(ls) is not None):
+#	    	subRoute = 0
+#	        routeCoords = findLineString(drive.driveid, route, 0)
 

@@ -21,7 +21,10 @@ for root, dirs, files in os.walk("/var/www/staticfiles/kml/"):
         		#print (kmlFile)
 			#print ("/var/www/staticfiles/video/" + outFile)
             		lines = open(kmlFile).read()
-            		requestCount += generateVideoFromKML(lines,outFile)
+            		#requestCount +=1
+			requestCount += generateVideoFromKML(lines,outFile)
+
+		
 
 
 

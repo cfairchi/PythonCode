@@ -67,11 +67,17 @@ for byway in byways:
     drive = DBDrive()
     if (byway.find("id") is not None and byway.find("id").text is not None):
     	drive.driveid = byway.find("id").text
-    
-    if (byway.find("Copyright") is not None):
-    	copyright = byway.find("Copytright")
+     
+    if (byway.find("Photo") is not None):
+	#print("Found Photo")    
+	photo = byway.find("Photo")
+	if (photo.find("Asset") is not None):
+		#print("Found Asset")
+		asset = photo.find("Asset")
+		if (asset.find("Copyright") is not None):
+			print("Found Copyright " + drive.driveid + asset.find("Copyright").text )
+			
     	
-    	print(copyright.text)
     	
     #routeCoords = []    
     #if (byway.find("Route") is not None):

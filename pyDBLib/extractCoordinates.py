@@ -57,7 +57,7 @@ def findLineString(theDriveId, route, theSubRoute):
 	
 	
 def copyrightImage(theDriveId):
-	os.chdir("../../android_apps/BywayExplorer/res/drawable-hdpi/")
+	os.chdir("/home/chris/git-repos/android_apps/BywayExplorer/res/drawable-hdpi/")
 	for files in glob.glob("*" + theDriveId + "*"):
     		print files
     		os.rename(files, files.replace("image","cr_image"))

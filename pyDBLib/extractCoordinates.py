@@ -60,6 +60,7 @@ def copyrightImage(theDriveId):
 	os.chdir("/var/www/staticfiles/images/")
 	for files in glob.glob("*" + theDriveId + "*"):
     		print files
+    		os.rename(files, files.replace(".jpg","copytright.jpg")
     		
 	
 drive = DBDrive()

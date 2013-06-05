@@ -57,10 +57,10 @@ def findLineString(theDriveId, route, theSubRoute):
 	
 	
 def copyrightImage(theDriveId):
-	os.chdir("/var/www/staticfiles/images/")
+	os.chdir("~/git-repos/android_apps/BywayExplorer/res/drawable-hdpi/")
 	for files in glob.glob("*" + theDriveId + "*"):
     		print files
-    		os.rename(files, files.replace(".jpg","copytright.jpg"))
+    		os.rename(files, files.replace("image","cr_image"))
     		
 	
 drive = DBDrive()

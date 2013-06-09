@@ -21,10 +21,11 @@ def generateVideoFromCoords(theCoords, theVideoFileName):
 
     lastLLA = None
     
+    skip = 0
     for txt in theCoords:
-        if not txt.startswith('0') and not txt.startswith('<') and not txt == "":
+        if not txt.startswith('0') and not txt.startswith('<') and not txt == "" and not skip==1:
             print(txt)
-	    txt = txt.rstrip()
+	        txt = txt.rstrip()
             llastr = txt.split(',')
             lat = float(llastr[1])
             lon = float(llastr[0])
@@ -45,13 +46,16 @@ def generateVideoFromCoords(theCoords, theVideoFileName):
             statinfo = os.stat("sv_" + str(i) +".jpg")
             if (statinfo.st_size > 5000):
                 img = cv.LoadImage("sv_" + str(i) +".jpg")
-                for x in range(0, 8):
+                slip = 1
+                for x in range(0, 4):
                     cv.WriteFrame(w, img)
 
             os.remove("sv_" + str(i) +".jpg")
             lastLLA = lla
             print i
             i+=1
+        else:
+            skip = 0
     print str(i) + " Images Processed"
     return requestCount
     

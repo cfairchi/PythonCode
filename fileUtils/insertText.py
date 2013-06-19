@@ -9,7 +9,7 @@ def insertText(directory, extension, text):
           f.write(text)
           lines = open(fName+"~").read()
           for line in lines:
-            f.writeline(line)
+            f.write(line)
           
 
 

@@ -9,8 +9,8 @@ def insertText(directory, extension, text):
           f.write(text)
           lines = open(fName+"~").read()
           for line in lines:
-            f.write(line)
+            f.writeline(line)
           
 
 
-insertText(".", ".cs" ,"//*****************************************************************")
+insertText(".", ".cs" ,"//*****************************************************************/r/nTEST/r/n//*****************************************************************")

@@ -25,7 +25,7 @@ def generateVideoFromCoords(theCoords, theVideoFileName):
     for txt in theCoords:
         if not txt.startswith('0') and not txt.startswith('<') and not txt == "" and not skip==1:
             print(txt)
-	        txt = txt.rstrip()
+	    txt = txt.rstrip()
             llastr = txt.split(',')
             lat = float(llastr[1])
             lon = float(llastr[0])

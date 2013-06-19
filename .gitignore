@@ -3,3 +3,5 @@
 chrispwd.py
 GoogleAPIKey.py
 *.mpeg
+*.key
+GoogleAPIKey.*

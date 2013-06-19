@@ -8,7 +8,7 @@ def insertText(directory, extension, text):
           f = open(fName,"w+")
           f.write(text)
           lines = open(fName+"~").read()
-          for line in Lines:
+          for line in lines:
             f.write(line)
           f.Close  
 

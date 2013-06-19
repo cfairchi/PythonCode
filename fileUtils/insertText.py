@@ -9,7 +9,7 @@ def insertText(directory, extension, text):
           f.write(text)
           lines = open(kmlFile).read()
           for line in Lines:
-            f.write line
+            f.write(line)
           f.Close  
 
 

@@ -10,7 +10,7 @@ def insertText(directory, extension, text):
           lines = open(fName+"~").read()
           for line in lines:
             f.write(line)
-          f.Close  
+          
 
 
 insertText(".", ".cs" ,"//*****************************************************************")
